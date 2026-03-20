@@ -1,0 +1,114 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     reactingFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+endTime         2;
+
+stopAt          endTime; //writeNow; 
+
+deltaT          1e-7; //0.01; // Adjust based on CFL for 6.5 m/s
+//maxDeltaT       5e-7;    // cap to avoid jumpy growth
+
+writeControl    adjustableRunTime;  //timeStep;
+
+writeInterval   0.1;
+
+purgeWrite      10;//0;
+
+writeFormat     binary; //ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep  yes;
+
+maxCo           0.2; //1;
+
+functions
+{
+
+    CourantNo
+    {
+        type            CourantNo;
+        libs            ("libutilityFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+    }
+    
+    probes_H2_vertical
+    {
+        type            probes;
+        libs            (sampling);
+        writeControl    runTime;//writeTime;
+        writeInterval   0.1;
+        probeLocations
+        (
+            (0 0 7.1) // x=0.45 m (5 cm from right wall)
+            (0 0 7.20)  
+            (0 0 7.3)
+            (0 0 7.40)
+            (0 0 7.5)
+            (0 0 7.60)
+            (0 0 7.7)
+            (0 0 7.80)
+            (0 0 7.9)
+            (0 0 8.00)
+            (0 0 8.1)
+            (0 0 8.15)
+            (0 0 8.20)
+            (0 0 8.25)
+            (0 0 8.3)
+        );
+        fields          (H2);
+    }
+
+
+    myResiduals
+    {
+        type            solverInfo;
+        libs            ("libutilityFunctionObjects.so");
+
+        executeControl  timeStep;
+        executeInterval 100;      // Sample less frequently
+
+        writeControl    timeStep;
+        writeInterval   100;      // Write every 100 timesteps
+                                  
+        // List the fields to monitor (add more as needed)
+        fields          (p U k epsilon h H2);
+
+        // Optional: Set to 'yes' to also output residual fields to time directories
+        // writeResidualFields yes;
+
+        // Optional: Control when to execute (defaults to timeStep if unspecified)
+        // executeControl  timeStep;
+        // executeInterval 1;
+    }
+}
+// ************************************************************************* //

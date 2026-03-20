@@ -1,0 +1,172 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Web:      www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+scale 1.0;
+
+// ======================  USER PARAMETERS (fully parameterized)  ======================
+xmin            -150;   // x min (m)  → LEFT
+xmax             40;    // x max (m)  → RIGHT
+ymin             -40;   // y min (m)  → FRONT
+ymax              40;   // y max (m)  → BACK
+zmin               0;   // z min (m)  → BOTTOM (WALL)
+zmax              42;   // z max (m)  → TOP
+
+xRef               0;   // x-location of finest mesh (vent position)
+yRef               0;   // y-location of finest mesh
+zRef               7;   // z-location of finest mesh
+
+gradingFactor      3;   // desired grading ratio (>1)
+
+// Number of cells in each direction (adjust for your resolution)
+nCellsXLeft       60;   // left of xRef (-150 → 0)
+nCellsXRight      25;   // right of xRef (0 → 40)
+nCellsYNeg        35;   // negative y (-40 → 0)  → FRONT
+nCellsYPos        35;   // positive y (0 → 40)   → BACK
+nCellsZBottom     9;   // bottom of zRef (0 → 7)
+nCellsZTop        35;   // top of zRef (7 → 42)
+
+// Grading values (automatically derived)
+gradingTowards  0.5;    // cells get smaller towards refinement point
+gradingAway     2.0;    // cells get larger away from refinement point
+// =================================================================================
+
+// ======================  VERTICES (27 points)  ======================
+vertices
+(
+    // z = zmin
+    ($xmin $ymin $zmin)   // 0
+    ($xRef $ymin $zmin)   // 1
+    ($xmax $ymin $zmin)   // 2
+    ($xmin $yRef $zmin)   // 3
+    ($xRef $yRef $zmin)   // 4
+    ($xmax $yRef $zmin)   // 5
+    ($xmin $ymax $zmin)   // 6
+    ($xRef $ymax $zmin)   // 7
+    ($xmax $ymax $zmin)   // 8
+
+    // z = zRef
+    ($xmin $ymin $zRef)   // 9
+    ($xRef $ymin $zRef)   // 10
+    ($xmax $ymin $zRef)   // 11
+    ($xmin $yRef $zRef)   // 12
+    ($xRef $yRef $zRef)   // 13   ← finest point
+    ($xmax $yRef $zRef)   // 14
+    ($xmin $ymax $zRef)   // 15
+    ($xRef $ymax $zRef)   // 16
+    ($xmax $ymax $zRef)   // 17
+
+    // z = zmax
+    ($xmin $ymin $zmax)   // 18
+    ($xRef $ymin $zmax)   // 19
+    ($xmax $ymin $zmax)   // 20
+    ($xmin $yRef $zmax)   // 21
+    ($xRef $yRef $zmax)   // 22
+    ($xmax $yRef $zmax)   // 23
+    ($xmin $ymax $zmax)   // 24
+    ($xRef $ymax $zmax)   // 25
+    ($xmax $ymax $zmax)   // 26
+);
+
+// ======================  BLOCKS (8 blocks with grading)  ======================
+blocks
+(
+    hex (0 1 4 3 9 10 13 12) ($nCellsXLeft $nCellsYNeg $nCellsZBottom) simpleGrading ($gradingTowards $gradingTowards $gradingTowards)
+    hex (1 2 5 4 10 11 14 13) ($nCellsXRight $nCellsYNeg $nCellsZBottom) simpleGrading ($gradingAway $gradingTowards $gradingTowards)
+    hex (3 4 7 6 12 13 16 15) ($nCellsXLeft $nCellsYPos $nCellsZBottom) simpleGrading ($gradingTowards $gradingAway $gradingTowards)
+    hex (4 5 8 7 13 14 17 16) ($nCellsXRight $nCellsYPos $nCellsZBottom) simpleGrading ($gradingAway $gradingAway $gradingTowards)
+    hex (9 10 13 12 18 19 22 21) ($nCellsXLeft $nCellsYNeg $nCellsZTop) simpleGrading ($gradingTowards $gradingTowards $gradingAway)
+    hex (10 11 14 13 19 20 23 22) ($nCellsXRight $nCellsYNeg $nCellsZTop) simpleGrading ($gradingAway $gradingTowards $gradingAway)
+    hex (12 13 16 15 21 22 25 24) ($nCellsXLeft $nCellsYPos $nCellsZTop) simpleGrading ($gradingTowards $gradingAway $gradingAway)
+    hex (13 14 17 16 22 23 26 25) ($nCellsXRight $nCellsYPos $nCellsZTop) simpleGrading ($gradingAway $gradingAway $gradingAway)
+);
+
+// ======================  BOUNDARIES (now split as requested)  ======================
+boundary
+(
+    left    // x = xmin → open
+    {
+        type patch;
+        faces
+        (
+            (0 3 12 9)
+            (3 6 15 12)
+            (9 12 21 18)
+            (12 15 24 21)
+        );
+    }
+
+    right   // x = xmax → open
+    {
+        type patch;
+        faces
+        (
+            (2 5 14 11)
+            (5 8 17 14)
+            (11 14 23 20)
+            (14 17 26 23)
+        );
+    }
+
+    front   // y = ymin → open
+    {
+        type patch;
+        faces
+        (
+            (0 1 10 9)
+            (1 2 11 10)
+            (9 10 19 18)
+            (10 11 20 19)
+        );
+    }
+
+    back    // y = ymax → open
+    {
+        type patch;
+        faces
+        (
+            (6 7 16 15)
+            (7 8 17 16)
+            (15 16 25 24)
+            (16 17 26 25)
+        );
+    }
+
+    top     // z = zmax → open
+    {
+        type patch;
+        faces
+        (
+            (18 19 22 21)
+            (19 20 23 22)
+            (21 22 25 24)
+            (22 23 26 25)
+        );
+    }
+
+    bottom  // z = zmin → WALL
+    {
+        type wall;
+        faces
+        (
+            (0 1 4 3)
+            (1 2 5 4)
+            (3 4 7 6)
+            (4 5 8 7)
+        );
+    }
+);
+
+// ************************************************************************* //

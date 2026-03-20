@@ -1,0 +1,31 @@
+# Wavefront OBJ file written 2026-03-19T15:15:23
+o bunkering-boat_m_edgeMesh
+
+# points : 8
+# lines  : 12
+
+# <points count="8">
+v 10 31 0
+v -120 31 0
+v -120 31 12
+v 10 31 12
+v 10 1 0
+v 10 1 12
+v -120 1 0
+v -120 1 12
+# </points>
+
+# <edges count="12">
+l 2 3
+l 1 2
+l 4 1
+l 3 4
+l 5 1
+l 6 5
+l 4 6
+l 7 5
+l 8 7
+l 6 8
+l 2 7
+l 8 3
+# </edges>

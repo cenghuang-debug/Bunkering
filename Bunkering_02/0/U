@@ -1,0 +1,91 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    arch        "LSB;label=32;scalar=64";
+    class       volVectorField;
+    location    "0";
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    left
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+    right
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+    front
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+    back
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+    top
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+    bottom
+    {
+        type            noSlip;
+    }
+    bunkering-boat_m
+    {
+        type            noSlip;
+    }
+    bunkering-quay_m
+    {
+        type            noSlip;
+    }
+    nozzle
+    {
+        type            codedFixedValue;
+        value           uniform (0 0 0);
+        name            rampInletVelocity;
+        code            #{
+            const fvPatch& patch = this->patch();
+            const scalar t = this->db().time().value();
+
+            // User parameters:
+            const scalar Umax = 20; //1630;         // final velocity
+            const scalar t_ramp = 0.01;       // ramp time (seconds)
+
+            scalar scale = min(1.0, t / t_ramp);
+
+            forAll(patch, faceI)
+            {
+                // direction assumed x-axis, adjust to your nozzle direction
+                operator[](faceI) = vector(Umax * scale, 0, 0);
+            }
+        #};
+    }
+    nozzle_holder_wall
+    {
+        type            noSlip;
+    }
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,87 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    arch        "LSB;label=32;scalar=64";
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+10
+(
+    left
+    {
+        type            patch;
+        nFaces          3063;
+        startFace       1472600;
+    }
+    right
+    {
+        type            patch;
+        nFaces          3063;
+        startFace       1475663;
+    }
+    front
+    {
+        type            patch;
+        nFaces          3655;
+        startFace       1478726;
+    }
+    back
+    {
+        type            patch;
+        nFaces          3740;
+        startFace       1482381;
+    }
+    top
+    {
+        type            patch;
+        nFaces          6202;
+        startFace       1486121;
+    }
+    bottom
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          2044;
+        startFace       1492323;
+    }
+    bunkering-boat_m
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          18609;
+        startFace       1494367;
+    }
+    bunkering-quay_m
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          13770;
+        startFace       1512976;
+    }
+    nozzle
+    {
+        type            patch;
+        nFaces          40;
+        startFace       1526746;
+    }
+    nozzle_holder_wall
+    {
+        type            wall;
+        inGroups        1(wall);
+        nFaces          1846;
+        startFace       1526786;
+    }
+)
+
+// ************************************************************************* //

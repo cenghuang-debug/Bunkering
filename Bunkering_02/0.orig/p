@@ -1,0 +1,54 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 -1 -2 0 0 0 0];
+internalField   uniform 101325;
+
+boundaryField
+{
+    right
+    {
+        type            zeroGradient; 
+    }        
+    left                
+    {
+        type            zeroGradient; 
+    }        
+    front               
+    {
+        type            zeroGradient; 
+    }        
+    back                
+    {
+        type            totalPressure; //waveTransmissive;
+        p0              uniform 101325;
+        gamma       1.4;
+        U           U;
+        rho         rho;
+        psi         thermo:psi;
+        value       uniform 101325;
+    }        
+    top                 
+    {
+        type            zeroGradient; 
+    }        
+    bottom             { type zeroGradient; }
+    bunkering-boat_m   { type zeroGradient; }
+    bunkering-quay_m   { type zeroGradient; }
+    nozzle_holder_wall { type zeroGradient; }
+    nozzle             { type zeroGradient; }
+}
+// ************************************************************************* //

@@ -1,0 +1,69 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
+Arch   : "LSB;label=32;scalar=64"
+Exec   : renumberMesh -overwrite
+Date   : Mar 19 2026
+Time   : 15:21:12
+Host   : RISEPC-MhOrpSuy
+PID    : 154810
+I/O    : uncollated
+Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Mesh region0 size: 489622
+Before renumbering
+    band           : 344734
+    profile        : 1.78974e+10
+
+Using renumber-method: CuthillMcKee [default]
+
+Reading fields
+    volScalarField: H2 N2 O2 T Ydefault alphat epsilon k nut p p_waveTransmissive
+    volVectorField: UUsing dynamicCode for patch nozzle on field U at line 73 in "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/0/U/boundaryField/nozzle"
+Could not load "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_af596b38e24be9a0bb0635c4a2cf888153de7bd0.so"
+/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_af596b38e24be9a0bb0635c4a2cf888153de7bd0.so: cannot open shared object file: No such file or directory
+Creating new library in "dynamicCode/rampInletVelocity/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_af596b38e24be9a0bb0635c4a2cf888153de7bd0.so"
+Invoking wmake libso /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity
+wmake libso /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity
+    ln: ./lnInclude
+    dep: fixedValueFvPatchFieldTemplate.C
+    Ctoo: fixedValueFvPatchFieldTemplate.C
+    link: /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity/../platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_af596b38e24be9a0bb0635c4a2cf888153de7bd0.so
+
+
+After renumbering
+    band           : 16615
+    profile        : 4.04495e+09
+
+Writing mesh to "constant"
+Reading hexRef8 data : cellLevel
+Reading hexRef8 data : pointLevel
+Reading hexRef8 data : level0Edge
+
+Timings:
+    read mesh   : 0.0724991
+    read fields : 5.15108
+    decompose   : 0
+    cell-cells  : 0
+    renumber    : 0.117924
+    write       : 0.0574191
+TotalTime = 5.67329 s
+
+ExecutionTime = 0.54 s  ClockTime = 6 s
+
+End
+

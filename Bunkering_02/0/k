@@ -1,0 +1,84 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    arch        "LSB;label=32;scalar=64";
+    class       volScalarField;
+    location    "0";
+    object      k;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -2 0 0 0 0];
+
+internalField   uniform 3.8e-05;
+
+boundaryField
+{
+    left
+    {
+        type            inletOutlet;
+        inletValue      uniform 3.8e-05;
+        value           uniform 3.8e-05;
+    }
+    right
+    {
+        type            inletOutlet;
+        inletValue      uniform 3.8e-05;
+        value           uniform 3.8e-05;
+    }
+    front
+    {
+        type            inletOutlet;
+        inletValue      uniform 3.8e-05;
+        value           uniform 3.8e-05;
+    }
+    back
+    {
+        type            inletOutlet;
+        inletValue      uniform 3.8e-05;
+        value           uniform 3.8e-05;
+    }
+    top
+    {
+        type            inletOutlet;
+        inletValue      uniform 3.8e-05;
+        value           uniform 3.8e-05;
+    }
+    bottom
+    {
+        type            kqRWallFunction;
+        value           uniform 3.8e-05;
+    }
+    bunkering-boat_m
+    {
+        type            kqRWallFunction;
+        value           uniform 3.8e-05;
+    }
+    bunkering-quay_m
+    {
+        type            kqRWallFunction;
+        value           uniform 3.8e-05;
+    }
+    nozzle
+    {
+        type            turbulentIntensityKineticEnergyInlet;
+        intensity       0.05;
+        value           uniform 9963;
+    }
+    nozzle_holder_wall
+    {
+        type            kqRWallFunction;
+        value           uniform 3.8e-05;
+    }
+}
+
+
+// ************************************************************************* //
