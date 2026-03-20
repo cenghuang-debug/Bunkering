@@ -31,7 +31,7 @@ zRef               7;   // z-location of finest mesh
 gradingFactor      3;   // desired grading ratio (>1)
 
 // Number of cells in each direction (adjust for your resolution)
-nCellsXLeft       60;   // left of xRef (-150 → 0)
+nCellsXLeft       70;   // left of xRef (-150 → 0)
 nCellsXRight      25;   // right of xRef (0 → 40)
 nCellsYNeg        35;   // negative y (-40 → 0)  → FRONT
 nCellsYPos        35;   // positive y (0 → 40)   → BACK
