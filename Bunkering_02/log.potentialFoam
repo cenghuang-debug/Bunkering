@@ -8,10 +8,10 @@
 Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : potentialFoam
-Date   : Mar 19 2026
-Time   : 15:21:18
+Date   : Mar 20 2026
+Time   : 08:51:19
 Host   : RISEPC-MhOrpSuy
-PID    : 155009
+PID    : 14849
 I/O    : uncollated
 Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02
 nProcs : 1
@@ -51,7 +51,7 @@ DICPCG:  Solving for Phi, Initial residual = 0, Final residual = 0, No Iteration
 DICPCG:  Solving for Phi, Initial residual = 0, Final residual = 0, No Iterations 0
 Continuity error = 0
 Interpolated velocity error = 0
-ExecutionTime = 0.92 s  ClockTime = 1 s
+ExecutionTime = 0.86 s  ClockTime = 1 s
 
 End
 

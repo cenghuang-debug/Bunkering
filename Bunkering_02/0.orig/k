@@ -28,6 +28,6 @@ boundaryField
     bunkering-boat_m    { type kqRWallFunction; value $internalField; }
     bunkering-quay_m    { type kqRWallFunction; value $internalField; }
     nozzle_holder_wall  { type kqRWallFunction; value $internalField; }
-    nozzle              { type turbulentIntensityKineticEnergyInlet; intensity 0.05; value uniform 9963; }
+    nozzle              { type turbulentIntensityKineticEnergyInlet; intensity 0.05; value uniform 6.0e2; }
 }
 // ************************************************************************* //

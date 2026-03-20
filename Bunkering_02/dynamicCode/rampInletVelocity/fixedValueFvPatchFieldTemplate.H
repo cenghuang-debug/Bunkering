@@ -69,7 +69,7 @@ class rampInletVelocityFixedValueFvPatchVectorField
 public:
 
     //- SHA1 representation of the code content
-    static constexpr const char* const SHA1sum = "af596b38e24be9a0bb0635c4a2cf888153de7bd0";
+    static constexpr const char* const SHA1sum = "c57a7e89f961b16d894500db83b7a28d85d4e51f";
 
     //- Runtime type information
     TypeName("rampInletVelocity");

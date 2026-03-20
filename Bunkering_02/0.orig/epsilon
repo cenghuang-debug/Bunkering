@@ -28,6 +28,6 @@ boundaryField
     bunkering-boat_m    { type epsilonWallFunction; value $internalField; }
     bunkering-quay_m    { type epsilonWallFunction; value $internalField; }
     nozzle_holder_wall  { type epsilonWallFunction; value $internalField; }
-    nozzle              { type turbulentMixingLengthDissipationRateInlet; mixingLength 0.01; value $internalField; }
+    nozzle              { type turbulentMixingLengthDissipationRateInlet; mixingLength 0.01; value uniform 8.62e5; }
 }
 // ************************************************************************* //

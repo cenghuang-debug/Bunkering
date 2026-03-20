@@ -1,6 +1,6 @@
 /* dynamicCode:
- * SHA1 = af596b38e24be9a0bb0635c4a2cf888153de7bd0
+ * SHA1 = c57a7e89f961b16d894500db83b7a28d85d4e51f
  */
 fixedValueFvPatchFieldTemplate.C
 
-LIB = $(PWD)/../platforms/$(WM_OPTIONS)/lib/librampInletVelocity_af596b38e24be9a0bb0635c4a2cf888153de7bd0
+LIB = $(PWD)/../platforms/$(WM_OPTIONS)/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f

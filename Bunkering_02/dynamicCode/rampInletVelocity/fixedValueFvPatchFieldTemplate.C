@@ -54,11 +54,11 @@ namespace Foam
 // * * * * * * * * * * * * * * * Global Functions  * * * * * * * * * * * * * //
 
 // dynamicCode:
-// SHA1 = af596b38e24be9a0bb0635c4a2cf888153de7bd0
+// SHA1 = c57a7e89f961b16d894500db83b7a28d85d4e51f
 //
 // unique function name that can be checked if the correct library version
 // has been loaded
-extern "C" void rampInletVelocity_af596b38e24be9a0bb0635c4a2cf888153de7bd0(bool load)
+extern "C" void rampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f(bool load)
 {
     if (load)
     {
@@ -206,7 +206,7 @@ const fvPatch& patch = this->patch();
             const scalar t = this->db().time().value();
 
             // User parameters:
-            const scalar Umax = 20; //1630;         // final velocity
+            const scalar Umax = 100; //1630;         // final velocity
             const scalar t_ramp = 0.01;       // ramp time (seconds)
 
             scalar scale = min(1.0, t / t_ramp);
@@ -214,7 +214,7 @@ const fvPatch& patch = this->patch();
             forAll(patch, faceI)
             {
                 // direction assumed x-axis, adjust to your nozzle direction
-                operator[](faceI) = vector(Umax * scale, 0, 0);
+                operator[](faceI) = vector(0, 0, Umax * scale);
             }
 //}}} end code
 

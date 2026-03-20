@@ -78,7 +78,7 @@ boundaryField
             const scalar t = this->db().time().value();
 
             // User parameters:
-            const scalar Umax = 20; //1630;         // final velocity
+            const scalar Umax = 100; //1630;         // final velocity
             const scalar t_ramp = 0.01;       // ramp time (seconds)
 
             scalar scale = min(1.0, t / t_ramp);
@@ -86,7 +86,7 @@ boundaryField
             forAll(patch, faceI)
             {
                 // direction assumed x-axis, adjust to your nozzle direction
-                operator[](faceI) = vector(Umax * scale, 0, 0);
+                operator[](faceI) = vector(0, 0, Umax * scale);
             }
         #};
     }
