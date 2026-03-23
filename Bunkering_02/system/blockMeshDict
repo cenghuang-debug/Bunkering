@@ -24,23 +24,21 @@ ymax              40;   // y max (m)  → BACK
 zmin               0;   // z min (m)  → BOTTOM (WALL)
 zmax              42;   // z max (m)  → TOP
 
-xRef               0;   // x-location of finest mesh (vent position)
+xRef               0;  // x-location of finest mesh (vent position)
 yRef               0;   // y-location of finest mesh
 zRef               7;   // z-location of finest mesh
 
-gradingFactor      3;   // desired grading ratio (>1)
-
 // Number of cells in each direction (adjust for your resolution)
-nCellsXLeft       70;   // left of xRef (-150 → 0)
+nCellsXLeft       60;   // left of xRef (-150 → 0)
 nCellsXRight      25;   // right of xRef (0 → 40)
 nCellsYNeg        35;   // negative y (-40 → 0)  → FRONT
 nCellsYPos        35;   // positive y (0 → 40)   → BACK
-nCellsZBottom     9;   // bottom of zRef (0 → 7)
+nCellsZBottom     9;  // bottom of zRef (0 → 7)
 nCellsZTop        35;   // top of zRef (7 → 42)
 
 // Grading values (automatically derived)
-gradingTowards  0.5;    // cells get smaller towards refinement point
-gradingAway     2.0;    // cells get larger away from refinement point
+gradingTowards  0.67; //0.5;   // cells get smaller towards refinement point
+gradingAway     1.5;  //2.0;    // cells get larger away from refinement point
 // =================================================================================
 
 // ======================  VERTICES (27 points)  ======================

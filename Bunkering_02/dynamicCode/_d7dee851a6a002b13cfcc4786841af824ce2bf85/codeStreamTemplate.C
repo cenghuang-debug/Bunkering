@@ -56,7 +56,7 @@ namespace Foam
 extern "C" void codeStream_d7dee851a6a002b13cfcc4786841af824ce2bf85(Foam::Ostream& os, const Foam::dictionary& dict)
 {
 //{{{ begin code
-    #line 68 "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/system/snappyHexMeshDict/geometry/#codeStream"
+    #line 75 "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/system/snappyHexMeshDict/geometry/#codeStream"
 // Access top-level config correctly
             const dictionary& cfg = dict.parent().subDict("refinementBoxesCfg");
 

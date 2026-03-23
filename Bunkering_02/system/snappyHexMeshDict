@@ -30,7 +30,7 @@ refinementBoxesCfg
     dy_level_1     5.0;        // [m]
     dz_level_1     35.2;       // [m]  (example: from z=6.95 up to ~42)
 
-    zBase          6.8;       // bottom z of all boxes
+    zBase          6.8; //6.95;       // bottom z of all boxes
     namePrefix     "refinementBox_";  // base name
     nameSuffix     "xsmall";          // suffix
 }
@@ -124,7 +124,7 @@ castellatedMeshControls
     // Note that this is the number of cells before removing the part which
     // is not 'visible' from the keepPoint. The final number of cells might
     // actually be a lot less.
-    maxGlobalCells 8000000;
+    maxGlobalCells 2000000;
 
     // The surface refinement loop might spend lots of iterations refining just a
     // few cells. This setting will cause refinement to stop if <= minimumRefine
@@ -135,7 +135,7 @@ castellatedMeshControls
     // Number of buffer layers between different levels.
     // 1 means normal 2:1 refinement restriction, larger means slower
     // refinement.
-    nCellsBetweenLevels 4; //5;
+    nCellsBetweenLevels 3; //5;
 
 
 
@@ -204,16 +204,6 @@ castellatedMeshControls
     // - outside. Same but cells outside.
     refinementRegions
     {
-        bunkering-boat_m
-        {
-            mode distance;
-            levels ((0.5 2));    // level 2 within 0.5m of boat surface
-        }
-        bunkering-quay_m
-        {
-            mode distance;
-            levels ((0.5 2));    // level 2 within 0.5m of quay surface
-        }
         refinementBox_gap
         {
             mode inside;
@@ -269,15 +259,15 @@ snapControls
 {
     //- Number of patch smoothing iterations before finding correspondence
     //  to surface
-    nSmoothPatch 5; // 3;
+    nSmoothPatch 5; //3;
 
     //- Relative distance for points to be attracted by surface feature point
     //  or edge. True distance is this factor times local
     //  maximum edge length.
-    tolerance 2.0; //1.5; //1.0;
+    tolerance 1.5; //1.0; 
 
     //- Number of mesh displacement relaxation iterations.
-    nSolveIter 300;
+    nSolveIter 300; //500;
 
     //- Maximum number of snapping relaxation iterations. Should stop
     //  before upon reaching a correct mesh.
@@ -287,7 +277,7 @@ snapControls
 
         //- Number of feature edge snapping iterations.
         //  Leave out altogether to disable.
-        nFeatureSnapIter 15; //25; //10;
+        nFeatureSnapIter 25; //10;
 
         //- Detect (geometric) features by sampling the surface
         implicitFeatureSnap true;

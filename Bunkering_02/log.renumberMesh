@@ -9,9 +9,9 @@ Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : renumberMesh -overwrite
 Date   : Mar 20 2026
-Time   : 08:51:15
+Time   : 16:36:23
 Host   : RISEPC-MhOrpSuy
-PID    : 14655
+PID    : 285952
 I/O    : uncollated
 Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02
 nProcs : 1
@@ -24,30 +24,30 @@ Create time
 
 Create mesh for time = 0
 
-Mesh region0 size: 489622
+Mesh region0 size: 411750
 Before renumbering
-    band           : 344734
-    profile        : 1.78974e+10
+    band           : 346079
+    profile        : 1.31539e+10
 
 Using renumber-method: CuthillMcKee [default]
 
 Reading fields
     volScalarField: H2 N2 O2 T Ydefault alphat epsilon k nut p p_waveTransmissive
     volVectorField: UUsing dynamicCode for patch nozzle on field U at line 73 in "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/0/U/boundaryField/nozzle"
-Could not load "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_71a097c0632289bb44a3818e06a19bf4fdf5ce02.so"
-/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_71a097c0632289bb44a3818e06a19bf4fdf5ce02.so: cannot open shared object file: No such file or directory
-Creating new library in "dynamicCode/rampInletVelocity/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_71a097c0632289bb44a3818e06a19bf4fdf5ce02.so"
+Could not load "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so"
+/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so: cannot open shared object file: No such file or directory
+Creating new library in "dynamicCode/rampInletVelocity/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so"
 Invoking wmake libso /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity
 wmake libso /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity
     ln: ./lnInclude
     dep: fixedValueFvPatchFieldTemplate.C
     Ctoo: fixedValueFvPatchFieldTemplate.C
-    link: /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity/../platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_71a097c0632289bb44a3818e06a19bf4fdf5ce02.so
+    link: /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity/../platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so
 
 
 After renumbering
-    band           : 16615
-    profile        : 4.04495e+09
+    band           : 11670
+    profile        : 2.1034e+09
 
 Writing mesh to "constant"
 Reading hexRef8 data : cellLevel
@@ -55,15 +55,15 @@ Reading hexRef8 data : pointLevel
 Reading hexRef8 data : level0Edge
 
 Timings:
-    read mesh   : 0.0649482
-    read fields : 3.9716
+    read mesh   : 0.0569819
+    read fields : 3.53936
     decompose   : 0
     cell-cells  : 0
-    renumber    : 0.110903
-    write       : 0.0545422
-TotalTime = 4.43088 s
+    renumber    : 0.0881333
+    write       : 0.046886
+TotalTime = 3.91218 s
 
-ExecutionTime = 0.47 s  ClockTime = 4 s
+ExecutionTime = 0.38 s  ClockTime = 4 s
 
 End
 

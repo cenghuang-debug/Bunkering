@@ -9,9 +9,9 @@ Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : surfaceFeatureExtract
 Date   : Mar 20 2026
-Time   : 08:45:34
+Time   : 16:33:08
 Host   : RISEPC-MhOrpSuy
-PID    : 12952
+PID    : 284825
 I/O    : uncollated
 Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02
 nProcs : 1

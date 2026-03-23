@@ -1,53 +1,51 @@
 /*--------------------------------*- C++ -*----------------------------------*\
 | =========                 |                                                 |
 | \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
-|  \\    /   O peration     | Version:  v2406                                 |
+|  \\    /   O peration     | Version:  2406                                  |
 |   \\  /    A nd           | Website:  www.openfoam.com                      |
 |    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
     version     2.0;
-    format      ascii;
+    format      binary;
+    arch        "LSB;label=32;scalar=64";
     class       volVectorField;
+    location    "0";
     object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dimensions      [0 1 -1 0 0 0 0];
+
 internalField   uniform (0 0 0);
 
 boundaryField
 {
-    right
-    {
-        type            pressureInletOutletVelocity;
-        value           $internalField;
-        phi             phi;
-    }
     left
     {
         type            pressureInletOutletVelocity;
-        value           $internalField;
-        phi             phi;
+        value           uniform (0 0 0);
+    }
+    right
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
     }
     front
     {
         type            pressureInletOutletVelocity;
-        value           $internalField;
-        phi             phi;
+        value           uniform (0 0 0);
     }
     back
     {
         type            pressureInletOutletVelocity;
-        value           $internalField;
-        phi             phi;
+        value           uniform (0 0 0);
     }
     top
     {
         type            pressureInletOutletVelocity;
-        value           $internalField;
-        phi             phi;
+        value           uniform (0 0 0);
     }
     bottom
     {
@@ -61,19 +59,12 @@ boundaryField
     {
         type            noSlip;
     }
-    nozzle_holder_wall
-    {
-        type            noSlip;
-    }
     nozzle
     {
         type            codedFixedValue;
-        value           uniform (0 0 0);     // dummy
-
-        name    rampInletVelocity;
-
-        code
-        #{
+        value           uniform (0 0 0);
+        name            rampInletVelocity;
+        code            #{
             const fvPatch& patch = this->patch();
             const scalar t = this->db().time().value();
 
@@ -90,5 +81,11 @@ boundaryField
             }
         #};
     }
+    nozzle_holder_wall
+    {
+        type            noSlip;
+    }
 }
+
+
 // ************************************************************************* //

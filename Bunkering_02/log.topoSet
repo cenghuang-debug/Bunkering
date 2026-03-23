@@ -9,9 +9,9 @@ Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : topoSet
 Date   : Mar 20 2026
-Time   : 08:51:13
+Time   : 16:36:21
 Host   : RISEPC-MhOrpSuy
-PID    : 14644
+PID    : 285943
 I/O    : uncollated
 Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02
 nProcs : 1
@@ -31,21 +31,21 @@ Time = 0
 Created faceSet nozzle
     Applying source patchToFace
     Adding all faces of patches: (bunkering-nozzle_up_m) ...
-    Found matching patch bunkering-nozzle_up_m with 1886 faces
-    faceSet nozzle now size 1886
-Read set faceSet nozzle size:1886
+    Found matching patch bunkering-nozzle_up_m with 1822 faces
+    faceSet nozzle now size 1822
+Read set faceSet nozzle size:1822
     Applying source boxToFace
     Adding faces with centre within boxes 1((-0.023 -0.023 6.9485) (0.023 0.023 6.9515))
-    faceSet nozzle now size 40
+    faceSet nozzle now size 24
 Created faceSet nozzle_holder_wall
     Applying source patchToFace
     Adding all faces of patches: (bunkering-nozzle_up_m) ...
-    Found matching patch bunkering-nozzle_up_m with 1886 faces
-    faceSet nozzle_holder_wall now size 1886
-Read set faceSet nozzle_holder_wall size:1886
+    Found matching patch bunkering-nozzle_up_m with 1822 faces
+    faceSet nozzle_holder_wall now size 1822
+Read set faceSet nozzle_holder_wall size:1822
     Applying source faceToFace
     Removing all elements of face sets: (nozzle)
-    faceSet nozzle_holder_wall now size 1846
+    faceSet nozzle_holder_wall now size 1798
 
 End
 
