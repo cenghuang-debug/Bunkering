@@ -1,0 +1,24 @@
+<?xml version='1.0'?>
+<!-- time='0' -->
+<VTKFile type='vtkMultiBlockDataSet' version='1.0' byte_order='LittleEndian' header_type='UInt64'>
+  <vtkMultiBlockDataSet>
+    <DataSet name='internal' file='Bunkering_02_0/internal.vtu' />
+    <Block name='boundary'>
+      <DataSet name='left' file='Bunkering_02_0/boundary/left.vtp' />
+      <DataSet name='right' file='Bunkering_02_0/boundary/right.vtp' />
+      <DataSet name='front' file='Bunkering_02_0/boundary/front.vtp' />
+      <DataSet name='back' file='Bunkering_02_0/boundary/back.vtp' />
+      <DataSet name='top' file='Bunkering_02_0/boundary/top.vtp' />
+      <DataSet name='bottom' file='Bunkering_02_0/boundary/bottom.vtp' />
+      <DataSet name='bunkering-boat_m' file='Bunkering_02_0/boundary/bunkering-boat_m.vtp' />
+      <DataSet name='bunkering-quay_m' file='Bunkering_02_0/boundary/bunkering-quay_m.vtp' />
+      <DataSet name='nozzle' file='Bunkering_02_0/boundary/nozzle.vtp' />
+      <DataSet name='nozzle_holder_wall' file='Bunkering_02_0/boundary/nozzle_holder_wall.vtp' />
+    </Block>
+  </vtkMultiBlockDataSet>
+  <FieldData>
+    <DataArray type='Float32' Name='TimeValue' NumberOfTuples='1' format='ascii'>
+0
+    </DataArray>
+  </FieldData>
+</VTKFile>
