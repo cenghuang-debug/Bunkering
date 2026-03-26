@@ -21,66 +21,66 @@ FoamFile
     left
     {
         type            patch;
-        nFaces          2993;
-        startFace       1228887;
+        nFaces          3031;
+        startFace       1144995;
     }
     right
     {
         type            patch;
-        nFaces          2996;
-        startFace       1231880;
+        nFaces          3034;
+        startFace       1148026;
     }
     front
     {
         type            patch;
-        nFaces          3485;
-        startFace       1234876;
+        nFaces          3570;
+        startFace       1151060;
     }
     back
     {
         type            patch;
         nFaces          3740;
-        startFace       1238361;
+        startFace       1154630;
     }
     top
     {
         type            patch;
-        nFaces          6130;
-        startFace       1242101;
+        nFaces          6070;
+        startFace       1158370;
     }
     bottom
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          2557;
-        startFace       1248231;
+        nFaces          2548;
+        startFace       1164440;
     }
     bunkering-boat_m
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          24014;
-        startFace       1250788;
+        nFaces          22162;
+        startFace       1166988;
     }
     bunkering-quay_m
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          18164;
-        startFace       1274802;
+        nFaces          18733;
+        startFace       1189150;
     }
     nozzle
     {
         type            patch;
-        nFaces          24;
-        startFace       1292966;
+        nFaces          28;
+        startFace       1207883;
     }
     nozzle_holder_wall
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          1798;
-        startFace       1292990;
+        nFaces          3034;
+        startFace       1207911;
     }
 )
 

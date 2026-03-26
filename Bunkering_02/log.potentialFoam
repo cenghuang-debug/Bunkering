@@ -8,12 +8,12 @@
 Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : potentialFoam
-Date   : Mar 20 2026
-Time   : 16:36:27
+Date   : Mar 26 2026
+Time   : 13:40:16
 Host   : RISEPC-MhOrpSuy
-PID    : 286143
+PID    : 146092
 I/O    : uncollated
-Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02
+Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02
 nProcs : 1
 trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
@@ -29,7 +29,7 @@ potentialFlow: Operating solver in PISO mode
 
 Reading velocity field U
 
-Using dynamicCode for patch nozzle on field U at line 66 in "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/0/U/boundaryField/nozzle"
+Using dynamicCode for patch nozzle on field U at line 66 in "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/0/U/boundaryField/nozzle"
 Constructing pressure field p
 
 Constructing velocity potential field Phi
@@ -51,7 +51,7 @@ DICPCG:  Solving for Phi, Initial residual = 0, Final residual = 0, No Iteration
 DICPCG:  Solving for Phi, Initial residual = 0, Final residual = 0, No Iterations 0
 Continuity error = 0
 Interpolated velocity error = 0
-ExecutionTime = 0.64 s  ClockTime = 0 s
+ExecutionTime = 0.6 s  ClockTime = 1 s
 
 End
 

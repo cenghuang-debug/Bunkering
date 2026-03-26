@@ -8,12 +8,12 @@
 Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : surfaceFeatureExtract
-Date   : Mar 20 2026
-Time   : 16:33:08
+Date   : Mar 26 2026
+Time   : 13:37:21
 Host   : RISEPC-MhOrpSuy
-PID    : 284825
+PID    : 144841
 I/O    : uncollated
-Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02
+Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02
 nProcs : 1
 trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
@@ -64,22 +64,22 @@ Final Feature set:
         open edges         : 0
         multiply connected : 0
 
-Writing extendedFeatureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m.extendedFeatureEdgeMesh"
+Writing extendedFeatureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m.extendedFeatureEdgeMesh"
 
-Writing extendedEdgeMesh components to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m"
-Writing 8 convex feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_convexFeaturePts.obj"
-Writing 0 concave feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_concaveFeaturePts.obj"
-Writing 0 mixed feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_mixedFeaturePts.obj"
-Writing 0 mixed feature point structure to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_mixedFeaturePtsStructure.obj"
-Writing 12 external edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_externalEdges.obj"
-Writing 0 internal edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_internalEdges.obj"
-Writing 0 flat edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_flatEdges.obj"
-Writing 0 open edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_openEdges.obj"
-Writing 0 multiple edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_multipleEdges.obj"
-Writing 0 region edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_regionEdges.obj"
-Writing 12 edge directions to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_edgeDirections.obj"
+Writing extendedEdgeMesh components to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m"
+Writing 8 convex feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_convexFeaturePts.obj"
+Writing 0 concave feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_concaveFeaturePts.obj"
+Writing 0 mixed feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_mixedFeaturePts.obj"
+Writing 0 mixed feature point structure to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_mixedFeaturePtsStructure.obj"
+Writing 12 external edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_externalEdges.obj"
+Writing 0 internal edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_internalEdges.obj"
+Writing 0 flat edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_flatEdges.obj"
+Writing 0 open edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_openEdges.obj"
+Writing 0 multiple edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_multipleEdges.obj"
+Writing 0 region edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_regionEdges.obj"
+Writing 12 edge directions to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-boat_m_edgeDirections.obj"
 
-Writing featureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/triSurface/bunkering-boat_m.eMesh"
+Writing featureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/triSurface/bunkering-boat_m.eMesh"
 Surfaces     : bunkering-quay_m.stl
 Output       : bunkering-quay_m
 Load options : offset
@@ -117,22 +117,22 @@ Final Feature set:
         open edges         : 0
         multiply connected : 0
 
-Writing extendedFeatureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m.extendedFeatureEdgeMesh"
+Writing extendedFeatureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m.extendedFeatureEdgeMesh"
 
-Writing extendedEdgeMesh components to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m"
-Writing 8 convex feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_convexFeaturePts.obj"
-Writing 0 concave feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_concaveFeaturePts.obj"
-Writing 0 mixed feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_mixedFeaturePts.obj"
-Writing 0 mixed feature point structure to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_mixedFeaturePtsStructure.obj"
-Writing 12 external edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_externalEdges.obj"
-Writing 0 internal edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_internalEdges.obj"
-Writing 0 flat edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_flatEdges.obj"
-Writing 0 open edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_openEdges.obj"
-Writing 0 multiple edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_multipleEdges.obj"
-Writing 0 region edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_regionEdges.obj"
-Writing 12 edge directions to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_edgeDirections.obj"
+Writing extendedEdgeMesh components to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m"
+Writing 8 convex feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_convexFeaturePts.obj"
+Writing 0 concave feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_concaveFeaturePts.obj"
+Writing 0 mixed feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_mixedFeaturePts.obj"
+Writing 0 mixed feature point structure to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_mixedFeaturePtsStructure.obj"
+Writing 12 external edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_externalEdges.obj"
+Writing 0 internal edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_internalEdges.obj"
+Writing 0 flat edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_flatEdges.obj"
+Writing 0 open edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_openEdges.obj"
+Writing 0 multiple edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_multipleEdges.obj"
+Writing 0 region edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_regionEdges.obj"
+Writing 12 edge directions to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-quay_m_edgeDirections.obj"
 
-Writing featureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/triSurface/bunkering-quay_m.eMesh"
+Writing featureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/triSurface/bunkering-quay_m.eMesh"
 Surfaces     : bunkering-nozzle_up_m.stl
 Output       : bunkering-nozzle_up_m
 Load options : offset
@@ -170,22 +170,22 @@ Final Feature set:
         open edges         : 0
         multiply connected : 0
 
-Writing extendedFeatureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m.extendedFeatureEdgeMesh"
+Writing extendedFeatureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m.extendedFeatureEdgeMesh"
 
-Writing extendedEdgeMesh components to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m"
-Writing 8 convex feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_convexFeaturePts.obj"
-Writing 4 concave feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_concaveFeaturePts.obj"
-Writing 4 mixed feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_mixedFeaturePts.obj"
-Writing 4 mixed feature point structure to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_mixedFeaturePtsStructure.obj"
-Writing 16 external edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_externalEdges.obj"
-Writing 8 internal edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_internalEdges.obj"
-Writing 0 flat edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_flatEdges.obj"
-Writing 0 open edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_openEdges.obj"
-Writing 0 multiple edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_multipleEdges.obj"
-Writing 0 region edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_regionEdges.obj"
-Writing 24 edge directions to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_edgeDirections.obj"
+Writing extendedEdgeMesh components to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m"
+Writing 8 convex feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_convexFeaturePts.obj"
+Writing 4 concave feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_concaveFeaturePts.obj"
+Writing 4 mixed feature points to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_mixedFeaturePts.obj"
+Writing 4 mixed feature point structure to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_mixedFeaturePtsStructure.obj"
+Writing 16 external edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_externalEdges.obj"
+Writing 8 internal edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_internalEdges.obj"
+Writing 0 flat edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_flatEdges.obj"
+Writing 0 open edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_openEdges.obj"
+Writing 0 multiple edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_multipleEdges.obj"
+Writing 0 region edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_regionEdges.obj"
+Writing 24 edge directions to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_edgeDirections.obj"
 
-Writing featureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/constant/triSurface/bunkering-nozzle_up_m.eMesh"
+Writing featureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/triSurface/bunkering-nozzle_up_m.eMesh"
 ExecutionTime = 0 s  ClockTime = 0 s
 
 End

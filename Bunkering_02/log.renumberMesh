@@ -8,12 +8,12 @@
 Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : renumberMesh -overwrite
-Date   : Mar 20 2026
-Time   : 16:36:23
+Date   : Mar 26 2026
+Time   : 13:40:12
 Host   : RISEPC-MhOrpSuy
-PID    : 285952
+PID    : 145900
 I/O    : uncollated
-Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02
+Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02
 nProcs : 1
 trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
@@ -24,30 +24,31 @@ Create time
 
 Create mesh for time = 0
 
-Mesh region0 size: 411750
+Mesh region0 size: 384558
 Before renumbering
-    band           : 346079
-    profile        : 1.31539e+10
+    band           : 332554
+    profile        : 1.40398e+10
 
 Using renumber-method: CuthillMcKee [default]
 
 Reading fields
     volScalarField: H2 N2 O2 T Ydefault alphat epsilon k nut p p_waveTransmissive
-    volVectorField: UUsing dynamicCode for patch nozzle on field U at line 73 in "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/0/U/boundaryField/nozzle"
-Could not load "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so"
-/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so: cannot open shared object file: No such file or directory
+    volVectorField: UUsing dynamicCode for patch nozzle on field U at line 73 in "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/0/U/boundaryField/nozzle"
+Could not load "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so"
+/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/dynamicCode/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so: cannot open shared object file: No such file or directory
 Creating new library in "dynamicCode/rampInletVelocity/platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so"
-Invoking wmake libso /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity
-wmake libso /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity
+Invoking wmake libso /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/dynamicCode/rampInletVelocity
+wmake libso /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/dynamicCode/rampInletVelocity
     ln: ./lnInclude
     dep: fixedValueFvPatchFieldTemplate.C
     Ctoo: fixedValueFvPatchFieldTemplate.C
-    link: /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_02/dynamicCode/rampInletVelocity/../platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so
+    link: /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/dynamicCode/rampInletVelocity/../platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so
 
+Reading faceSet: skewFaces
 
 After renumbering
-    band           : 11670
-    profile        : 2.1034e+09
+    band           : 10642
+    profile        : 1.80342e+09
 
 Writing mesh to "constant"
 Reading hexRef8 data : cellLevel
@@ -55,13 +56,13 @@ Reading hexRef8 data : pointLevel
 Reading hexRef8 data : level0Edge
 
 Timings:
-    read mesh   : 0.0569819
-    read fields : 3.53936
+    read mesh   : 0.0514853
+    read fields : 3.61969
     decompose   : 0
     cell-cells  : 0
-    renumber    : 0.0881333
-    write       : 0.046886
-TotalTime = 3.91218 s
+    renumber    : 0.093453
+    write       : 0.0402518
+TotalTime = 3.99802 s
 
 ExecutionTime = 0.38 s  ClockTime = 4 s
 
