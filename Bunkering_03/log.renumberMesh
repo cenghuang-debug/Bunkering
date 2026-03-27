@@ -1,0 +1,59 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
+Arch   : "LSB;label=32;scalar=64"
+Exec   : renumberMesh -overwrite
+Date   : Mar 27 2026
+Time   : 10:24:46
+Host   : RISEPC-MhOrpSuy
+PID    : 145433
+I/O    : uncollated
+Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_03
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Mesh region0 size: 156941
+Before renumbering
+    band           : 149382
+    profile        : 4.2086e+09
+
+Using renumber-method: CuthillMcKee [default]
+
+Reading fields
+    volScalarField: H2 N2 O2 T Ydefault alphat epsilon k nut p
+    volVectorField: U
+
+After renumbering
+    band           : 3042
+    profile        : 2.67868e+08
+
+Writing mesh to "constant"
+Reading hexRef8 data : cellLevel
+Reading hexRef8 data : pointLevel
+Reading hexRef8 data : level0Edge
+
+Timings:
+    read mesh   : 0.0362942
+    read fields : 0.00918362
+    decompose   : 0
+    cell-cells  : 0
+    renumber    : 0.0394739
+    write       : 0.0198432
+TotalTime = 0.187868 s
+
+ExecutionTime = 0.18 s  ClockTime = 0 s
+
+End
+

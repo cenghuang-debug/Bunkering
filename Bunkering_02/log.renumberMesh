@@ -9,9 +9,9 @@ Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : renumberMesh -overwrite
 Date   : Mar 26 2026
-Time   : 13:40:12
+Time   : 14:33:39
 Host   : RISEPC-MhOrpSuy
-PID    : 145900
+PID    : 181652
 I/O    : uncollated
 Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02
 nProcs : 1
@@ -24,10 +24,10 @@ Create time
 
 Create mesh for time = 0
 
-Mesh region0 size: 384558
+Mesh region0 size: 156941
 Before renumbering
-    band           : 332554
-    profile        : 1.40398e+10
+    band           : 149382
+    profile        : 4.2086e+09
 
 Using renumber-method: CuthillMcKee [default]
 
@@ -44,11 +44,10 @@ wmake libso /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bu
     Ctoo: fixedValueFvPatchFieldTemplate.C
     link: /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/dynamicCode/rampInletVelocity/../platforms/linux64GccDPInt32Opt/lib/librampInletVelocity_c57a7e89f961b16d894500db83b7a28d85d4e51f.so
 
-Reading faceSet: skewFaces
 
 After renumbering
-    band           : 10642
-    profile        : 1.80342e+09
+    band           : 3042
+    profile        : 2.67868e+08
 
 Writing mesh to "constant"
 Reading hexRef8 data : cellLevel
@@ -56,15 +55,15 @@ Reading hexRef8 data : pointLevel
 Reading hexRef8 data : level0Edge
 
 Timings:
-    read mesh   : 0.0514853
-    read fields : 3.61969
+    read mesh   : 0.0269439
+    read fields : 4.18261
     decompose   : 0
     cell-cells  : 0
-    renumber    : 0.093453
-    write       : 0.0402518
-TotalTime = 3.99802 s
+    renumber    : 0.0390446
+    write       : 0.0166926
+TotalTime = 4.34307 s
 
-ExecutionTime = 0.38 s  ClockTime = 4 s
+ExecutionTime = 0.16 s  ClockTime = 4 s
 
 End
 

@@ -1,0 +1,84 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2406                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      binary;
+    arch        "LSB;label=32;scalar=64";
+    class       volScalarField;
+    location    "0";
+    object      epsilon;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -3 0 0 0 0];
+
+internalField   uniform 2e-07;
+
+boundaryField
+{
+    left
+    {
+        type            inletOutlet;
+        inletValue      uniform 2e-07;
+        value           uniform 2e-07;
+    }
+    right
+    {
+        type            inletOutlet;
+        inletValue      uniform 2e-07;
+        value           uniform 2e-07;
+    }
+    front
+    {
+        type            inletOutlet;
+        inletValue      uniform 2e-07;
+        value           uniform 2e-07;
+    }
+    back
+    {
+        type            inletOutlet;
+        inletValue      uniform 2e-07;
+        value           uniform 2e-07;
+    }
+    top
+    {
+        type            inletOutlet;
+        inletValue      uniform 2e-07;
+        value           uniform 2e-07;
+    }
+    bottom
+    {
+        type            epsilonWallFunction;
+        value           uniform 2e-07;
+    }
+    bunkering-boat_m
+    {
+        type            epsilonWallFunction;
+        value           uniform 2e-07;
+    }
+    bunkering-quay_m
+    {
+        type            epsilonWallFunction;
+        value           uniform 2e-07;
+    }
+    nozzle
+    {
+        type            turbulentMixingLengthDissipationRateInlet;
+        mixingLength    0.01;
+        value           uniform 862000;
+    }
+    nozzle_holder_wall
+    {
+        type            epsilonWallFunction;
+        value           uniform 2e-07;
+    }
+}
+
+
+// ************************************************************************* //

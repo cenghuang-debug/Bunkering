@@ -22,7 +22,7 @@ addLayers       false; //true;
 // --- Parameters for nested refinement boxes (edit only here) ---
 refinementBoxesCfg
 {
-    nLevels        7;          // total number of boxes/levels
+    nLevels        8;          // total number of boxes/levels
     scalingFactor  2;       // dx_i = dx_1 / scalingFactor^(i-1)
 
     // outermost box size (level 1)

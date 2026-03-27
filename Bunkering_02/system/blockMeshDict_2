@@ -1,0 +1,274 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  Field          | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   Operation      | blockMeshDict                                   |
+|   \\  /    And            | Uniform core + graded outer mesh                |
+|    \\/     Manipulation   |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+scale 1.0;
+
+// ======================  USER PARAMETERS  ======================
+
+// Domain limits
+xmin            -150;
+xMidMin           -5;
+xMidMax            5;
+xmax              40;
+
+ymin             -40;
+yMidMin            0;
+yMidMax            5;
+ymax              40;
+
+zmin               0;
+zmax              42;
+
+// Central uniform block cell size
+dx               0.25;
+dy               0.25;
+dz               0.25;
+
+// Cell counts
+// Central uniform block
+nCellsXMid        40;   // (5 - (-5))/0.25 = 40
+nCellsYMid        20;   // (5 - 0)/0.25 = 20
+nCellsZ          168;   // (42 - 0)/0.25 = 168
+
+// Outer graded regions (adjust as needed)
+nCellsXLeft       60;
+nCellsXRight      25;
+nCellsYFront      35;
+nCellsYBack       35;
+
+// Grading
+// NOTE:
+//  simpleGrading < 1  => cells get smaller in the positive coordinate direction
+//  simpleGrading > 1  => cells get larger  in the positive coordinate direction
+//
+// We want:
+//  - larger cells towards xmin and ymin
+//  - larger cells towards xmax and ymax
+//
+// Therefore:
+//  x-left  : grading < 1  (large at xmin, small near x=-5)
+//  x-right : grading > 1  (small near x=5, large at xmax)
+//  y-front : grading < 1  (large at ymin, small near y=0)
+//  y-back  : grading > 1  (small near y=5, large at ymax)
+
+gradeXLeft      0.20;
+gradeXRight     5.00;
+gradeYFront     0.20;
+gradeYBack      5.00;
+
+// ===============================================================
+// VERTICES
+// ===============================================================
+
+vertices
+(
+    // z = zmin
+    ($xmin    $ymin    $zmin)    // 0
+    ($xMidMin $ymin    $zmin)    // 1
+    ($xMidMax $ymin    $zmin)    // 2
+    ($xmax    $ymin    $zmin)    // 3
+
+    ($xmin    $yMidMin $zmin)    // 4
+    ($xMidMin $yMidMin $zmin)    // 5
+    ($xMidMax $yMidMin $zmin)    // 6
+    ($xmax    $yMidMin $zmin)    // 7
+
+    ($xmin    $yMidMax $zmin)    // 8
+    ($xMidMin $yMidMax $zmin)    // 9
+    ($xMidMax $yMidMax $zmin)    // 10
+    ($xmax    $yMidMax $zmin)    // 11
+
+    ($xmin    $ymax    $zmin)    // 12
+    ($xMidMin $ymax    $zmin)    // 13
+    ($xMidMax $ymax    $zmin)    // 14
+    ($xmax    $ymax    $zmin)    // 15
+
+    // z = zmax
+    ($xmin    $ymin    $zmax)    // 16
+    ($xMidMin $ymin    $zmax)    // 17
+    ($xMidMax $ymin    $zmax)    // 18
+    ($xmax    $ymin    $zmax)    // 19
+
+    ($xmin    $yMidMin $zmax)    // 20
+    ($xMidMin $yMidMin $zmax)    // 21
+    ($xMidMax $yMidMin $zmax)    // 22
+    ($xmax    $yMidMin $zmax)    // 23
+
+    ($xmin    $yMidMax $zmax)    // 24
+    ($xMidMin $yMidMax $zmax)    // 25
+    ($xMidMax $yMidMax $zmax)    // 26
+    ($xmax    $yMidMax $zmax)    // 27
+
+    ($xmin    $ymax    $zmax)    // 28
+    ($xMidMin $ymax    $zmax)    // 29
+    ($xMidMax $ymax    $zmax)    // 30
+    ($xmax    $ymax    $zmax)    // 31
+);
+
+// ===============================================================
+// BLOCKS  (9 total = 3 x 3 layout)
+// ===============================================================
+
+blocks
+(
+    // -------------------- Front row: y = ymin -> yMidMin --------------------
+
+    // Front-left
+    hex (0 1 5 4 16 17 21 20)
+        ($nCellsXLeft $nCellsYFront $nCellsZ)
+        simpleGrading ($gradeXLeft $gradeYFront 1)
+
+    // Front-middle
+    hex (1 2 6 5 17 18 22 21)
+        ($nCellsXMid $nCellsYFront $nCellsZ)
+        simpleGrading (1 $gradeYFront 1)
+
+    // Front-right
+    hex (2 3 7 6 18 19 23 22)
+        ($nCellsXRight $nCellsYFront $nCellsZ)
+        simpleGrading ($gradeXRight $gradeYFront 1)
+
+    // -------------------- Middle row: y = yMidMin -> yMidMax --------------------
+
+    // Middle-left
+    hex (4 5 9 8 20 21 25 24)
+        ($nCellsXLeft $nCellsYMid $nCellsZ)
+        simpleGrading ($gradeXLeft 1 1)
+
+    // Center uniform block
+    hex (5 6 10 9 21 22 26 25)
+        ($nCellsXMid $nCellsYMid $nCellsZ)
+        simpleGrading (1 1 1)
+
+    // Middle-right
+    hex (6 7 11 10 22 23 27 26)
+        ($nCellsXRight $nCellsYMid $nCellsZ)
+        simpleGrading ($gradeXRight 1 1)
+
+    // -------------------- Back row: y = yMidMax -> ymax --------------------
+
+    // Back-left
+    hex (8 9 13 12 24 25 29 28)
+        ($nCellsXLeft $nCellsYBack $nCellsZ)
+        simpleGrading ($gradeXLeft $gradeYBack 1)
+
+    // Back-middle
+    hex (9 10 14 13 25 26 30 29)
+        ($nCellsXMid $nCellsYBack $nCellsZ)
+        simpleGrading (1 $gradeYBack 1)
+
+    // Back-right
+    hex (10 11 15 14 26 27 31 30)
+        ($nCellsXRight $nCellsYBack $nCellsZ)
+        simpleGrading ($gradeXRight $gradeYBack 1)
+);
+
+// ===============================================================
+// BOUNDARIES
+// Names kept EXACTLY as in your original file
+// ===============================================================
+
+boundary
+(
+    left
+    {
+        type patch;
+        faces
+        (
+            (0 4 20 16)
+            (4 8 24 20)
+            (8 12 28 24)
+        );
+    }
+
+    right
+    {
+        type patch;
+        faces
+        (
+            (3 7 23 19)
+            (7 11 27 23)
+            (11 15 31 27)
+        );
+    }
+
+    front
+    {
+        type patch;
+        faces
+        (
+            (0 1 17 16)
+            (1 2 18 17)
+            (2 3 19 18)
+        );
+    }
+
+    back
+    {
+        type patch;
+        faces
+        (
+            (12 13 29 28)
+            (13 14 30 29)
+            (14 15 31 30)
+        );
+    }
+
+    top
+    {
+        type patch;
+        faces
+        (
+            (16 17 21 20)
+            (17 18 22 21)
+            (18 19 23 22)
+
+            (20 21 25 24)
+            (21 22 26 25)
+            (22 23 27 26)
+
+            (24 25 29 28)
+            (25 26 30 29)
+            (26 27 31 30)
+        );
+    }
+
+    bottom
+    {
+        type wall;
+        faces
+        (
+            (0 1 5 4)
+            (1 2 6 5)
+            (2 3 7 6)
+
+            (4 5 9 8)
+            (5 6 10 9)
+            (6 7 11 10)
+
+            (8 9 13 12)
+            (9 10 14 13)
+            (10 11 15 14)
+        );
+    }
+);
+
+// No patch merging
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //

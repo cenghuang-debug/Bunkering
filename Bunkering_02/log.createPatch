@@ -9,9 +9,9 @@ Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : createPatch -overwrite
 Date   : Mar 26 2026
-Time   : 13:40:11
+Time   : 14:33:38
 Host   : RISEPC-MhOrpSuy
-PID    : 145893
+PID    : 181647
 I/O    : uncollated
 Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02
 nProcs : 1
@@ -49,8 +49,8 @@ Adding new patch nozzle_holder_wall from
 
 Repatching mesh region0
 
-Read 28 faces from faceSet nozzle
-Read 3034 faces from faceSet nozzle_holder_wall
+Read 36 faces from faceSet nozzle
+Read 1314 faces from faceSet nozzle_holder_wall
 Doing topology modification to order faces.
 
 Not synchronising points.

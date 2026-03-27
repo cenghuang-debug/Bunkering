@@ -9,9 +9,9 @@ Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : checkMesh
 Date   : Mar 26 2026
-Time   : 13:40:11
+Time   : 14:33:38
 Host   : RISEPC-MhOrpSuy
-PID    : 145896
+PID    : 181650
 I/O    : uncollated
 Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02
 nProcs : 1
@@ -29,34 +29,31 @@ Check mesh...
 Time = 0
 
 Mesh stats 
-    points:           442687
-    faces:            1210945
-    internal faces:   1144995
-    cells:            384558
-    faces per cell:   6.12636
+    points:           189360
+    faces:            502587
+    internal faces:   466455
+    cells:            156941
+    faces per cell:   6.17456
     boundary patches: 10
     point zones:      1
     face zones:       0
     cell zones:       0
 
 Overall number of cells of each type:
-    hexahedra:     366697
-    prisms:        131
+    hexahedra:     147008
+    prisms:        0
     wedges:        0
     pyramids:      0
-    tet wedges:    5
+    tet wedges:    0
     tetrahedra:    0
-    polyhedra:     17725
+    polyhedra:     9933
     Breakdown of polyhedra by number of faces:
         faces   number of cells
-            5   9
-            6   2376
-            7   110
-            8   4
-            9   14342
-           12   789
-           15   92
-           18   3
+            6   2088
+            9   6787
+           12   848
+           15   191
+           18   19
 
 Checking topology...
     Boundary definition OK.
@@ -68,17 +65,17 @@ Checking topology...
 
 Checking patch topology for multiply connected surfaces...
                    Patch    Faces   Points  Surface topology
-                    left     3031     3190  ok (non-closed singly connected)
-                   right     3034     3193  ok (non-closed singly connected)
-                   front     3570     3780  ok (non-closed singly connected)
-                    back     3740     3870  ok (non-closed singly connected)
-                     top     6070     6239  ok (non-closed singly connected)
-                  bottom     2548     3058  ok (non-closed singly connected)
-        bunkering-boat_m    22162    22506  ok (non-closed singly connected)
-        bunkering-quay_m    18733    19205  ok (non-closed singly connected)
-                  nozzle       28       40  ok (non-closed singly connected)
-      nozzle_holder_wall     3034     3045  ok (non-closed singly connected)
-                    ".*"    65950    66417      ok (closed singly connected)
+                    left      901      989  ok (non-closed singly connected)
+                   right      901      989  ok (non-closed singly connected)
+                   front     2185     2396  ok (non-closed singly connected)
+                    back     1995     2112  ok (non-closed singly connected)
+                     top     3896     4044  ok (non-closed singly connected)
+                  bottom     2095     2621  ok (non-closed singly connected)
+        bunkering-boat_m    11451    11785  ok (non-closed singly connected)
+        bunkering-quay_m    11358    11736  ok (non-closed singly connected)
+                  nozzle       36       49  ok (non-closed singly connected)
+      nozzle_holder_wall     1314     1355  ok (non-closed singly connected)
+                    ".*"    36132    36498      ok (closed singly connected)
 
 
 Checking faceZone topology for multiply connected surfaces...
@@ -95,19 +92,18 @@ Checking geometry...
     Overall domain bounding box (-150 -40 0) (40 40 42)
     Mesh has 3 geometric (non-empty/wedge) directions (1 1 1)
     Mesh has 3 solution (non-empty) directions (1 1 1)
-    Boundary openness (4.05159e-17 -6.09116e-17 -6.7163e-16) OK.
-    Max cell openness = 3.85032e-16 OK.
-    Max aspect ratio = 13.6316 OK.
-    Minimum face area = 1.11744e-05. Maximum face area = 3.07612.  Face area magnitudes OK.
-    Min volume = 1.23415e-07. Max volume = 3.19368.  Total volume = 553600.  Cell volumes OK.
-    Mesh non-orthogonality Max: 54.9955 average: 7.98366
+    Boundary openness (1.68516e-16 -1.26769e-16 5.66304e-15) OK.
+    Max cell openness = 4.42901e-16 OK.
+    Max aspect ratio = 2.2992 OK.
+    Minimum face area = 3.41879e-05. Maximum face area = 4.19044.  Face area magnitudes OK.
+    Min volume = 2.53645e-07. Max volume = 8.51349.  Total volume = 553600.  Cell volumes OK.
+    Mesh non-orthogonality Max: 41.8994 average: 7.16905
     Non-orthogonality check OK.
     Face pyramids OK.
- ***Max skewness = 4.47417, 1 highly skew faces detected which may impair the quality of the results
-  <<Writing 1 skew faces to set skewFaces
+    Max skewness = 0.574625 OK.
     Coupled point location match (average 0) OK.
 
-Failed 1 mesh checks.
+Mesh OK.
 
 End
 

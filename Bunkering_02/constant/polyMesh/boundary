@@ -21,66 +21,66 @@ FoamFile
     left
     {
         type            patch;
-        nFaces          3031;
-        startFace       1144995;
+        nFaces          901;
+        startFace       466455;
     }
     right
     {
         type            patch;
-        nFaces          3034;
-        startFace       1148026;
+        nFaces          901;
+        startFace       467356;
     }
     front
     {
         type            patch;
-        nFaces          3570;
-        startFace       1151060;
+        nFaces          2185;
+        startFace       468257;
     }
     back
     {
         type            patch;
-        nFaces          3740;
-        startFace       1154630;
+        nFaces          1995;
+        startFace       470442;
     }
     top
     {
         type            patch;
-        nFaces          6070;
-        startFace       1158370;
+        nFaces          3896;
+        startFace       472437;
     }
     bottom
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          2548;
-        startFace       1164440;
+        nFaces          2095;
+        startFace       476333;
     }
     bunkering-boat_m
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          22162;
-        startFace       1166988;
+        nFaces          11451;
+        startFace       478428;
     }
     bunkering-quay_m
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          18733;
-        startFace       1189150;
+        nFaces          11358;
+        startFace       489879;
     }
     nozzle
     {
         type            patch;
-        nFaces          28;
-        startFace       1207883;
+        nFaces          36;
+        startFace       501237;
     }
     nozzle_holder_wall
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          3034;
-        startFace       1207911;
+        nFaces          1314;
+        startFace       501273;
     }
 )
 

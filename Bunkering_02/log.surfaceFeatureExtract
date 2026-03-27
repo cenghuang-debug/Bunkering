@@ -9,9 +9,9 @@ Build  : _630d60de3b-20240620 OPENFOAM=2406 version=v2406
 Arch   : "LSB;label=32;scalar=64"
 Exec   : surfaceFeatureExtract
 Date   : Mar 26 2026
-Time   : 13:37:21
+Time   : 14:32:54
 Host   : RISEPC-MhOrpSuy
-PID    : 144841
+PID    : 181116
 I/O    : uncollated
 Case   : /home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02
 nProcs : 1
@@ -186,7 +186,7 @@ Writing 0 region edges to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunk
 Writing 24 edge directions to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/extendedFeatureEdgeMesh/bunkering-nozzle_up_m_edgeDirections.obj"
 
 Writing featureEdgeMesh to "/home/chenhu/OpenFOAM/chenhu-v2406/run/Bunkering/Bunkering_gitHub/Bunkering_02/constant/triSurface/bunkering-nozzle_up_m.eMesh"
-ExecutionTime = 0 s  ClockTime = 0 s
+ExecutionTime = 0.01 s  ClockTime = 0 s
 
 End
 
