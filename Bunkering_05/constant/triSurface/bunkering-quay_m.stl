@@ -1,0 +1,86 @@
+solid Mesh
+ facet normal 0 1 0
+  outer loop
+   vertex 100 0 0
+   vertex -200 0 0
+   vertex -200 0 5
+  endloop
+ endfacet
+ facet normal 0 1 -0
+  outer loop
+   vertex 100 0 0
+   vertex -200 0 5
+   vertex 100 0 5
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 100 -50 0
+   vertex 100 0 0
+   vertex 100 0 5
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 100 -50 0
+   vertex 100 0 5
+   vertex 100 -50 5
+  endloop
+ endfacet
+ facet normal 0 -1 0
+  outer loop
+   vertex -200 -50 0
+   vertex 100 -50 0
+   vertex 100 -50 5
+  endloop
+ endfacet
+ facet normal 0 -1 0
+  outer loop
+   vertex -200 -50 0
+   vertex 100 -50 5
+   vertex -200 -50 5
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex -200 0 0
+   vertex -200 -50 0
+   vertex -200 -50 5
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex -200 0 0
+   vertex -200 -50 5
+   vertex -200 0 5
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex -200 0 0
+   vertex 100 0 0
+   vertex -200 -50 0
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex -200 -50 0
+   vertex 100 0 0
+   vertex 100 -50 0
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 100 0 5
+   vertex -200 0 5
+   vertex -200 -50 5
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 100 0 5
+   vertex -200 -50 5
+   vertex 100 -50 5
+  endloop
+ endfacet
+endsolid Mesh
