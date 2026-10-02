@@ -1,0 +1,85 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+// Southwest ambient wind, 7 m/s: Vx=4.95, Vy=-4.95, Vz=0
+windValue       uniform (4.95 -4.95 0);
+
+// internalField reflects wind blowing before rupture (not near-rest)
+internalField   $windValue;
+
+boundaryField
+{
+    right
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    left
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    front
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    back
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    top
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    bottom
+    {
+        type            noSlip;
+    }
+    bunkering-boat_m
+    {
+        type            noSlip;
+    }
+    bunkering-quay_larger_m
+    {
+        type            noSlip;
+    }
+    nozzle_holder_wall
+    {
+        type            noSlip;
+    }
+    nozzle
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0        (0 0 0))
+            (0.2      (0 0 800))   // ramp 0 to 800 m/s over 0.2 s
+            (2        (0 0 800))   // hold at 800 m/s until release end (endTime = 2 s)
+        );
+        value           uniform (0 0 0);
+}    
+}
+// ************************************************************************* //

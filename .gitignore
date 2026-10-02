@@ -1,0 +1,16 @@
+# OpenFOAM generated / result data — this repo keeps case setups only
+[0-9]*/
+!0.orig/
+0/
+processor*/
+constant/polyMesh/
+constant/extendedFeatureEdgeMesh/
+*.eMesh
+dynamicCode/
+postProcessing/
+VTK/
+log.*
+slurm-*.out
+*.foam
+__pycache__/
+*:Zone.Identifier

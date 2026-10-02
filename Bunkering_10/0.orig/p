@@ -1,0 +1,36 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 -1 -2 0 0 0 0];
+internalField   uniform 101325;
+
+// p is a derived field under rhoReactingBuoyantFoam (p = p_rgh + rho*gh,
+// set in pEqn.H each iteration) -- all patches use "calculated" and the
+// actual pressure BC physics is set on p_rgh below.
+boundaryField
+{
+    right               { type calculated; value uniform 101325; }
+    left                { type calculated; value uniform 101325; }
+    front               { type calculated; value uniform 101325; }
+    back                { type calculated; value uniform 101325; }
+    top                 { type calculated; value uniform 101325; }
+    bottom              { type calculated; value uniform 101325; }
+    bunkering-boat_m    { type calculated; value uniform 101325; }
+    bunkering-quay_larger_m    { type calculated; value uniform 101325; }
+    nozzle_holder_wall  { type calculated; value uniform 101325; }
+    nozzle              { type calculated; value uniform 101325; }
+}
+// ************************************************************************* //

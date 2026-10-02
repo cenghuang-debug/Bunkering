@@ -1,0 +1,198 @@
+solid Mesh
+ facet normal 0 1 0
+  outer loop
+   vertex 0.15 0.15 6.7
+   vertex -0.15 0.15 6.7
+   vertex -0.15 0.15 7
+  endloop
+ endfacet
+ facet normal 0 1 -0
+  outer loop
+   vertex 0.15 0.15 6.7
+   vertex -0.15 0.15 7
+   vertex 0.15 0.15 7
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex -0.15 0.15 6.7
+   vertex -0.15 -0.15 6.7
+   vertex -0.15 -0.15 7
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex -0.15 0.15 6.7
+   vertex -0.15 -0.15 7
+   vertex -0.15 0.15 7
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 0.15 -0.15 6.7
+   vertex 0.15 0.15 6.7
+   vertex 0.15 0.15 7
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex 0.15 -0.15 6.7
+   vertex 0.15 0.15 7
+   vertex 0.15 -0.15 7
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex -0.15 0.15 6.7
+   vertex 0.15 0.15 6.7
+   vertex -0.15 -0.15 6.7
+  endloop
+ endfacet
+ facet normal 0 0 -1
+  outer loop
+   vertex -0.15 -0.15 6.7
+   vertex 0.15 0.15 6.7
+   vertex 0.15 -0.15 6.7
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.098 -0.098 7
+   vertex -0.15 -0.15 7
+   vertex 0.15 -0.15 7
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.098 -0.098 7
+   vertex -0.098 -0.098 7
+   vertex -0.15 -0.15 7
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex -0.098 0.098 7
+   vertex -0.15 0.15 7
+   vertex -0.15 -0.15 7
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex -0.098 0.098 7
+   vertex -0.15 -0.15 7
+   vertex -0.098 -0.098 7
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.15 0.15 7
+   vertex -0.098 0.098 7
+   vertex 0.098 0.098 7
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.15 0.15 7
+   vertex 0.098 0.098 7
+   vertex 0.098 -0.098 7
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.15 0.15 7
+   vertex -0.15 0.15 7
+   vertex -0.098 0.098 7
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.15 0.15 7
+   vertex 0.098 -0.098 7
+   vertex 0.15 -0.15 7
+  endloop
+ endfacet
+ facet normal 0 -1 0
+  outer loop
+   vertex -0.15 -0.15 6.7
+   vertex 0.15 -0.15 6.7
+   vertex 0.15 -0.15 7
+  endloop
+ endfacet
+ facet normal 0 -1 0
+  outer loop
+   vertex -0.15 -0.15 6.7
+   vertex 0.15 -0.15 7
+   vertex -0.15 -0.15 7
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex -0.098 0.098 7
+   vertex -0.098 -0.098 7
+   vertex -0.098 -0.098 6.804
+  endloop
+ endfacet
+ facet normal 1 0 0
+  outer loop
+   vertex -0.098 0.098 7
+   vertex -0.098 -0.098 6.804
+   vertex -0.098 0.098 6.804
+  endloop
+ endfacet
+ facet normal -0 1 0
+  outer loop
+   vertex -0.098 -0.098 7
+   vertex 0.098 -0.098 7
+   vertex 0.098 -0.098 6.804
+  endloop
+ endfacet
+ facet normal 0 1 0
+  outer loop
+   vertex -0.098 -0.098 7
+   vertex 0.098 -0.098 6.804
+   vertex -0.098 -0.098 6.804
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0.098 -0.098 7
+   vertex 0.098 0.098 7
+   vertex 0.098 0.098 6.804
+  endloop
+ endfacet
+ facet normal -1 0 0
+  outer loop
+   vertex 0.098 -0.098 7
+   vertex 0.098 0.098 6.804
+   vertex 0.098 -0.098 6.804
+  endloop
+ endfacet
+ facet normal -0 -1 0
+  outer loop
+   vertex 0.098 0.098 7
+   vertex -0.098 0.098 7
+   vertex -0.098 0.098 6.804
+  endloop
+ endfacet
+ facet normal 0 -1 -0
+  outer loop
+   vertex 0.098 0.098 7
+   vertex -0.098 0.098 6.804
+   vertex 0.098 0.098 6.804
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.098 0.098 6.804
+   vertex -0.098 0.098 6.804
+   vertex -0.098 -0.098 6.804
+  endloop
+ endfacet
+ facet normal 0 0 1
+  outer loop
+   vertex 0.098 0.098 6.804
+   vertex -0.098 -0.098 6.804
+   vertex 0.098 -0.098 6.804
+  endloop
+ endfacet
+endsolid Mesh

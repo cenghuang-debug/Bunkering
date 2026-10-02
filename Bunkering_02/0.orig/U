@@ -67,28 +67,14 @@ boundaryField
     }
     nozzle
     {
-        type            codedFixedValue;
-        value           uniform (0 0 0);     // dummy
-
-        name    rampInletVelocity;
-
-        code
-        #{
-            const fvPatch& patch = this->patch();
-            const scalar t = this->db().time().value();
-
-            // User parameters:
-            const scalar Umax = 100; //1630;         // final velocity
-            const scalar t_ramp = 0.01;       // ramp time (seconds)
-
-            scalar scale = min(1.0, t / t_ramp);
-
-            forAll(patch, faceI)
-            {
-                // direction assumed x-axis, adjust to your nozzle direction
-                operator[](faceI) = vector(0, 0, Umax * scale);
-            }
-        #};
-    }
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0        (0 0 0))
+            (0.01     (0 0 100))   // ramp from 0 to 100 m/s over 0.01 s
+            (100      (0 0 100))   // hold at 100 m/s
+        );
+        value           uniform (0 0 0);
+}    
 }
 // ************************************************************************* //

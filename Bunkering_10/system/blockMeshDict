@@ -1,0 +1,205 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  Field          | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   Operation      | blockMeshDict                                   |
+|   \\  /    And            | Simple uniform mesh                             |
+|    \\/     Manipulation   |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+scale 1.0;
+
+// ======================  DOMAIN  ======================
+xmin    -150;
+xmax     110;   // raised for Bunkering_09 (100% rupture, 978mm nozzle):
+                 // nozzle is only 1m from the ship side and 40m from the old
+                 // x_max -- comparable to the estimated horizontal plume
+                 // radius (~22-35m), and the ship hull can Coanda-deflect
+                 // the plume along +x. Extended with margin -> 110m.
+                 // NOTE: kept uniform (no x-grading) -- the quay STL extends
+                 // to x=100, i.e. almost the entire extension region, so a
+                 // coarsening block there conflicts with the quay's geometry
+                 // (produced a highly skewed cell snapping to the quay's
+                 // downstream edge). Not enough clear far-field x-room to
+                 // grade profitably/safely, unlike z.
+
+ymin     -40;   // CORE region boundary (unchanged from earlier cases) --
+                 // the fine, uniform 2m block used by every prior case.
+yExt     -90;   // extended for Bunkering_10 (southwest wind, 7 m/s,
+                 // Vy=-4.95 m/s): wind advects the plume toward -y (quay
+                 // side) for the whole run (~10m mean advection over 2s) on
+                 // top of the ~22-35m turbulent plume radius already seen
+                 // without wind (see xmax note above) -- old ymin=-40 gave
+                 // too little buffer. Modelled with a separate GRADED
+                 // extension block (see MESH section) rather than widening
+                 // the uniform core: unlike x, the (larger) quay STL's real
+                 // edge is at y=-100, outside this extension, so a
+                 // coarsening block here doesn't cross a real geometric
+                 // edge and shouldn't produce the skewed-snap problem seen
+                 // in x. yExt=-90 keeps a 10m margin to that STL edge.
+ymax      40;   // unchanged -- nothing pushes the plume toward +y.
+
+zmin       0;
+zmid      42;   // top of the uniform lower block (unchanged from earlier cases)
+zmax     130;   // raised previously for the same 100% rupture domain-height study
+
+// ======================  MESH  ======================
+// Uniform cell size dx=dy=dz=2m across the full x range, the y CORE range
+// (ymin-ymax), and the lower (0-42m) z range -- unchanged from
+// Bunkering_07/08 so the existing ship/quay/nozzle refinement setup
+// (snappyHexMeshDict, topoSetDict) is unaffected; x widened to keep the
+// same 2m resolution out to x=110.
+nCellsX     130; // (110 - (-150)) / 2m
+nCellsY      40; // (40 - (-40)) / 2m -- CORE block only, unchanged.
+nCellsZ_lo   21; // 42;   // 42m / 21 = 2m cells
+
+// y EXTENSION block (y: -90 to -40, 50m span): graded from ~2.2m (matches
+// core, ~8% jump) up to ~13m near the far boundary -- far from the
+// ship/nozzle/plume core, doesn't need fine resolution. Same style as the
+// z upper block below.
+nCellsY_ext   14;
+gradingY_ext  3;      // coarsening factor from the core (small) out to yExt (large)
+gradingY_ext_inv  0.333333; // = 1/gradingY_ext; the extension blocks' v0 sits at the
+                 // yExt (far) corner, not the core corner -- required so the
+                 // block's (i,j,k) triad stays right-handed (see vertex note
+                 // below) -- so their j-direction grading has to run
+                 // far-to-near, i.e. the reciprocal of gradingY_ext.
+
+// Upper block (z: 42-130, 88m span): graded from ~2m (matches lower block,
+// smooth ~3% jump) up to ~12.4m near the top boundary -- far from the
+// ship/nozzle/plume core, doesn't need fine resolution.
+nCellsZ_hi   15;
+gradingZ_hi   6;   // ratio of last cell / first cell size
+
+// ======================  VERTICES  ======================
+vertices
+(
+    ($xmin $ymin $zmin)   // 0
+    ($xmax $ymin $zmin)   // 1
+    ($xmax $ymax $zmin)   // 2
+    ($xmin $ymax $zmin)   // 3
+
+    ($xmin $ymin $zmid)   // 4
+    ($xmax $ymin $zmid)   // 5
+    ($xmax $ymax $zmid)   // 6
+    ($xmin $ymax $zmid)   // 7
+
+    ($xmin $ymin $zmax)   // 8
+    ($xmax $ymin $zmax)   // 9
+    ($xmax $ymax $zmax)   // 10
+    ($xmin $ymax $zmax)   // 11
+
+    // y-extension plane (y = yExt), CORE-block z levels reused
+    ($xmax $yExt $zmin)   // 12
+    ($xmin $yExt $zmin)   // 13
+    ($xmax $yExt $zmid)   // 14
+    ($xmin $yExt $zmid)   // 15
+    ($xmax $yExt $zmax)   // 16
+    ($xmin $yExt $zmax)   // 17
+);
+
+// ======================  BLOCKS  ======================
+blocks
+(
+    // CORE (y: ymin-ymax), unchanged uniform blocks
+    hex (0 1 2 3 4 5 6 7) ($nCellsX $nCellsY $nCellsZ_lo) simpleGrading (1 1 1)
+    hex (4 5 6 7 8 9 10 11) ($nCellsX $nCellsY $nCellsZ_hi) simpleGrading (1 1 $gradingZ_hi)
+
+    // EXTENSION (y: yExt-ymin), graded away from the core in y.
+    // NOTE: v0 is placed at the yExt (far) corner here, not the core
+    // corner -- putting v0 at the shared core face instead makes the local
+    // (i,j,k) triad left-handed (i=+x, k=+z fixed to match the core block,
+    // j=v0->v3 would then point -y, so i x j = -z, antiparallel to k) and
+    // blockMesh rejects the block as "inside-out". With v0 at yExt, j
+    // points +y (toward the core) and the triad is right-handed; the y
+    // grading is therefore specified far-to-near, i.e. $gradingY_ext_inv.
+    hex (13 12 1 0 15 14 5 4) ($nCellsX $nCellsY_ext $nCellsZ_lo) simpleGrading (1 $gradingY_ext_inv 1)
+    hex (15 14 5 4 17 16 9 8) ($nCellsX $nCellsY_ext $nCellsZ_hi) simpleGrading (1 $gradingY_ext_inv $gradingZ_hi)
+);
+
+// ======================  EDGES  ======================
+edges
+(
+);
+
+// ======================  BOUNDARIES  ======================
+boundary
+(
+    left
+    {
+        type patch;
+        faces
+        (
+            (0 3 7 4)
+            (4 7 11 8)
+            (0 13 15 4)
+            (4 15 17 8)
+        );
+    }
+
+    right
+    {
+        type patch;
+        faces
+        (
+            (1 2 6 5)
+            (5 6 10 9)
+            (1 12 14 5)
+            (5 14 16 9)
+        );
+    }
+
+    front
+    {
+        type patch;
+        faces
+        (
+            (13 12 14 15)
+            (15 14 16 17)
+        );
+    }
+
+    back
+    {
+        type patch;
+        faces
+        (
+            (3 2 6 7)
+            (7 6 10 11)
+        );
+    }
+
+    top
+    {
+        type patch;
+        faces
+        (
+            (8 9 10 11)
+            (8 9 16 17)
+        );
+    }
+
+    bottom
+    {
+        type wall;
+        faces
+        (
+            (0 3 2 1)
+            (0 13 12 1)
+        );
+    }
+);
+
+// ======================  MERGE PATCH PAIRS  ======================
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //

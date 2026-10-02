@@ -1,0 +1,58 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+//create nozzle
+    {
+        name    nozzle;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+            {
+                patch "bunkering-nozzle_up_m";
+            }
+    }
+    {
+        name    nozzle;
+        type    faceSet;
+        action  subset;
+        source  boxToFace;
+        box (-23e-3 -23e-3 6948.5e-3)(23e-3 23e-3 6951.5e-3);
+    }
+//create nozzle_holder_wall
+    {
+        name    nozzle_holder_wall;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+            {
+                patch "bunkering-nozzle_up_m";
+            }
+    }
+    {
+        name    nozzle_holder_wall;
+        type    faceSet;
+        action  subtract;
+        source  faceToFace;
+        set     nozzle;
+    }
+);
+
+
+// ************************************************************************* //

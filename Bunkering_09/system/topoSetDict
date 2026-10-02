@@ -1,0 +1,61 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+//create nozzle
+    {
+        name    nozzle;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+            {
+                patch "bunkering-nozzle_up_m";
+            }
+    }
+    {
+        name    nozzle;
+        type    faceSet;
+        action  subset;
+        source  boxToFace;
+        // 978mm square nozzle, user-provided CAD geometry
+        // (bunkering_nozzle_up_978mm_m.stl): exit cap is recessed at
+        // z=6.022m (housing spans z=4.5-7.0, exit hole half-width 0.489m)
+        box (-0.489 -0.489 6.0205)(0.489 0.489 6.0235);
+    }
+//create nozzle_holder_wall
+    {
+        name    nozzle_holder_wall;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+            {
+                patch "bunkering-nozzle_up_m";
+            }
+    }
+    {
+        name    nozzle_holder_wall;
+        type    faceSet;
+        action  subtract;
+        source  faceToFace;
+        set     nozzle;
+    }
+);
+
+
+// ************************************************************************* //

@@ -1,0 +1,143 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  Field          | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   Operation      | blockMeshDict                                   |
+|   \\  /    And            | Uniform mesh + graded -y extension (wind)       |
+|    \\/     Manipulation   |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+scale 1.0;
+
+// ======================  DOMAIN  ======================
+xmin    -150;
+xmax      40;
+
+ymin     -40;   // core region boundary (unchanged)
+yExt     -90;   // extended for wind + larger quay footprint (graded)
+ymax      40;
+
+zmin       0;
+zmax      42;
+
+// ======================  MESH  ======================
+// Core: uniform cell size dx = dy = dz = 2 m (unchanged from Bunkering_07)
+nCellsX          95;
+nCellsY          40;   // core only
+nCellsZ          21;
+
+// -y extension: graded, reusing the recipe validated for Bunkering_10
+// (same 2m core cell size in y, so the recipe transplants directly)
+nCellsY_ext      14;
+gradingY_ext         3;
+gradingY_ext_inv     0.333333; // = 1/gradingY_ext (j runs yExt->ymin, i.e. far->near)
+
+// ======================  VERTICES  ======================
+vertices
+(
+    ($xmin $ymin $zmin)   // 0
+    ($xmax $ymin $zmin)   // 1
+    ($xmax $ymax $zmin)   // 2
+    ($xmin $ymax $zmin)   // 3
+
+    ($xmin $ymin $zmax)   // 4
+    ($xmax $ymin $zmax)   // 5
+    ($xmax $ymax $zmax)   // 6
+    ($xmin $ymax $zmax)   // 7
+
+    ($xmin $yExt $zmin)   // 8
+    ($xmax $yExt $zmin)   // 9
+    ($xmax $yExt $zmax)   // 10
+    ($xmin $yExt $zmax)   // 11
+);
+
+// ======================  BLOCKS  ======================
+blocks
+(
+    // core block (unchanged)
+    hex (0 1 2 3 4 5 6 7) ($nCellsX $nCellsY $nCellsZ) simpleGrading (1 1 1)
+
+    // -y extension block, graded finer toward the core (ymin) interface
+    hex (8 9 1 0 11 10 5 4) ($nCellsX $nCellsY_ext $nCellsZ) simpleGrading (1 $gradingY_ext_inv 1)
+);
+
+// ======================  EDGES  ======================
+edges
+(
+);
+
+// ======================  BOUNDARIES  ======================
+boundary
+(
+    left
+    {
+        type patch;
+        faces
+        (
+            (0 3 7 4)
+            (8 0 4 11)
+        );
+    }
+
+    right
+    {
+        type patch;
+        faces
+        (
+            (1 2 6 5)
+            (9 1 5 10)
+        );
+    }
+
+    front
+    {
+        type patch;
+        faces
+        (
+            (8 9 10 11)
+        );
+    }
+
+    back
+    {
+        type patch;
+        faces
+        (
+            (3 2 6 7)
+        );
+    }
+
+    top
+    {
+        type patch;
+        faces
+        (
+            (4 5 6 7)
+            (11 10 5 4)
+        );
+    }
+
+    bottom
+    {
+        type wall;
+        faces
+        (
+            (0 3 2 1)
+            (8 0 1 9)
+        );
+    }
+);
+
+// ======================  MERGE PATCH PAIRS  ======================
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //

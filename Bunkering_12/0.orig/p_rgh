@@ -1,0 +1,93 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      p_rgh;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [1 -1 -2 0 0 0 0];
+internalField   uniform 101325;
+
+// p_rgh is the field actually solved by rhoReactingBuoyantFoam.
+// Open boundaries keep the same non-reflecting waveTransmissive settings
+// validated on p in Bunkering_04/06 (the rho*g*h correction across the
+// 42 m domain height is ~500 Pa, ~0.5% of ambient -- second order next to
+// the acoustic reflection risk these BCs are tuned against).
+// Walls/nozzle use fixedFluxPressure, the standard buoyant-solver
+// wall pressure BC (flux-consistent with the wall-normal velocity BC).
+// "back" mirrors the previous totalPressure BC via the p_rgh analog
+// (prghTotalPressure).
+boundaryField
+{
+    right
+    {
+        type            waveTransmissive;
+        field           p_rgh;
+        psi             thermo:psi;
+        gamma           1.4;
+        fieldInf        101325;
+        lInf            5.0; //10.0 length scale over which pressure waves decay
+        phi             phi;
+        rho             rho;
+        value           uniform 101325;
+    }
+    left
+    {
+        type            waveTransmissive;
+        field           p_rgh;
+        psi             thermo:psi;
+        gamma           1.4;
+        fieldInf        101325;
+        lInf            5.0; //10.0 length scale over which pressure waves decay
+        phi             phi;
+        rho             rho;
+        value           uniform 101325;
+    }
+    front
+    {
+        type            waveTransmissive;
+        field           p_rgh;
+        psi             thermo:psi;
+        gamma           1.4;
+        fieldInf        101325;
+        lInf            5.0; //10.0 length scale over which pressure waves decay
+        phi             phi;
+        rho             rho;
+        value           uniform 101325;
+    }
+    back
+    {
+        type            prghTotalPressure;
+        p0              uniform 101325;
+        U               U;
+        rho             rho;
+        value           uniform 101325;
+    }
+    top
+    {
+        type            waveTransmissive;
+        field           p_rgh;
+        psi             thermo:psi;
+        gamma           1.4;
+        fieldInf        101325;
+        lInf            5.0; //10.0 length scale over which pressure waves decay
+        phi             phi;
+        rho             rho;
+        value           uniform 101325;
+    }
+    bottom              { type fixedFluxPressure; value uniform 101325; }
+    bunkering-boat_m    { type fixedFluxPressure; value uniform 101325; }
+    bunkering-quay_m    { type fixedFluxPressure; value uniform 101325; }
+    nozzle_holder_wall  { type fixedFluxPressure; value uniform 101325; }
+    nozzle              { type fixedFluxPressure; value uniform 101325; }
+}
+// ************************************************************************* //

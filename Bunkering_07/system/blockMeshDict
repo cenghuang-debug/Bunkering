@@ -1,0 +1,123 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  Field          | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   Operation      | blockMeshDict                                   |
+|   \\  /    And            | Simple uniform mesh                             |
+|    \\/     Manipulation   |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+scale 1.0;
+
+// ======================  DOMAIN  ======================
+xmin    -150;
+xmax      40;
+
+ymin     -40;
+ymax      40;
+
+zmin       0;
+zmax      42;
+
+// ======================  UNIFORM MESH  ======================
+// Uniform cell size: dx = dy = dz = 2 m
+nCellsX   95; //190;
+nCellsY   40; // 80;
+nCellsZ   21; // 42;
+
+// ======================  VERTICES  ======================
+vertices
+(
+    ($xmin $ymin $zmin)   // 0
+    ($xmax $ymin $zmin)   // 1
+    ($xmax $ymax $zmin)   // 2
+    ($xmin $ymax $zmin)   // 3
+
+    ($xmin $ymin $zmax)   // 4
+    ($xmax $ymin $zmax)   // 5
+    ($xmax $ymax $zmax)   // 6
+    ($xmin $ymax $zmax)   // 7
+);
+
+// ======================  BLOCKS  ======================
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) ($nCellsX $nCellsY $nCellsZ) simpleGrading (1 1 1)
+);
+
+// ======================  EDGES  ======================
+edges
+(
+);
+
+// ======================  BOUNDARIES  ======================
+boundary
+(
+    left
+    {
+        type patch;
+        faces
+        (
+            (0 3 7 4)
+        );
+    }
+
+    right
+    {
+        type patch;
+        faces
+        (
+            (1 2 6 5)
+        );
+    }
+
+    front
+    {
+        type patch;
+        faces
+        (
+            (0 1 5 4)
+        );
+    }
+
+    back
+    {
+        type patch;
+        faces
+        (
+            (3 2 6 7)
+        );
+    }
+
+    top
+    {
+        type patch;
+        faces
+        (
+            (4 5 6 7)
+        );
+    }
+
+    bottom
+    {
+        type wall;
+        faces
+        (
+            (0 3 2 1)
+        );
+    }
+);
+
+// ======================  MERGE PATCH PAIRS  ======================
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //

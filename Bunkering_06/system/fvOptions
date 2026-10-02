@@ -1,0 +1,34 @@
+
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+|  \\    /   O peration     | Version:  v2406
+|   \\  /    A nd           | Website:  www.openfoam.com
+|    \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvOptions;
+}
+
+// ************************************************************************* //
+
+// 1. Temperature limiter - strongly recommended for your case
+limitT
+{
+    type            limitTemperature;
+    active          true;
+    selectionMode   all;
+
+    min             260;    // Prevents crash at ~200 K
+    max             340;    // Safe upper limit for your case
+
+    fields          (h);    // Use 'h' because you are using sensibleEnthalpy
+}
+
+// ************************************************************************* //

@@ -1,0 +1,124 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     rhoReactingBuoyantFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+endTime         2;
+
+//stopAt          writeNow; 
+
+deltaT          1e-3; //0.01; // Adjust based on CFL for 6.5 m/s
+//maxDeltaT       5e-7;    // cap to avoid jumpy growth
+
+writeControl    adjustableRunTime;  //timeStep;
+
+writeInterval   0.1;
+
+purgeWrite      0;
+
+writeFormat     binary; //ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable yes;
+
+adjustTimeStep  yes;
+
+maxCo           0.5; //1;
+
+functions
+{
+
+    CourantNo
+    {
+        type            CourantNo;
+        libs            ("libutilityFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+    }
+    
+    probes_H2_vertical
+    {
+        type            probes;
+        libs            (sampling);
+        writeControl    runTime;//writeTime;
+        writeInterval   0.1;
+        probeLocations
+        (
+            // 978mm nozzle exit cap at z=6.022m; probes start just above it.
+            // Near field (6.1-10m): fine spacing to resolve initial mixing.
+            (0 0 6.10)
+            (0 0 6.30)
+            (0 0 6.50)
+            (0 0 7.00)
+            (0 0 7.50)
+            (0 0 8.00)
+            (0 0 9.00)
+            (0 0 10.00)
+            // Mid/far field (15-130m): coarser spacing up to the new
+            // domain top (z_max=130m, sized for this case's plume height).
+            (0 0 15.0)
+            (0 0 20.0)
+            (0 0 30.0)
+            (0 0 40.0)
+            (0 0 50.0)
+            (0 0 60.0)
+            (0 0 70.0)
+            (0 0 80.0)
+            (0 0 90.0)
+            (0 0 100.0)
+            (0 0 110.0)
+            (0 0 120.0)
+            (0 0 128.0)
+        );
+        fields          (H2);
+    }
+
+
+    myResiduals
+    {
+        type            solverInfo;
+        libs            ("libutilityFunctionObjects.so");
+
+        executeControl  timeStep;
+        executeInterval 100;      // Sample less frequently
+
+        writeControl    timeStep;
+        writeInterval   100;      // Write every 100 timesteps
+                                  
+        // List the fields to monitor (add more as needed)
+        fields          (p_rgh U k epsilon h H2);
+
+        // Optional: Set to 'yes' to also output residual fields to time directories
+        // writeResidualFields yes;
+
+        // Optional: Control when to execute (defaults to timeStep if unspecified)
+        // executeControl  timeStep;
+        // executeInterval 1;
+    }
+}
+// ************************************************************************* //

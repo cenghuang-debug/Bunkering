@@ -1,0 +1,33 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      epsilon;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -3 0 0 0 0];
+internalField   uniform 3.0187e-13; // background I=1%, U=0.01 m/s, L=1m (turbulence_initial_conditions.py)
+
+boundaryField
+{
+    right               { type inletOutlet; inletValue $internalField; value $internalField; }
+    left                { type inletOutlet; inletValue $internalField; value $internalField; }
+    front               { type inletOutlet; inletValue $internalField; value $internalField; }
+    back                { type inletOutlet; inletValue $internalField; value $internalField; }
+    top                 { type inletOutlet; inletValue $internalField; value $internalField; }
+    bottom              { type epsilonWallFunction; value $internalField; }
+    bunkering-boat_m    { type epsilonWallFunction; value $internalField; }
+    bunkering-quay_m    { type epsilonWallFunction; value $internalField; }
+    nozzle_holder_wall  { type epsilonWallFunction; value $internalField; }
+    nozzle              { type turbulentMixingLengthDissipationRateInlet; mixingLength 6.846e-2; value uniform 2.8220e5; } // l = 0.07*D, D=978mm (turbulence_initial_conditions_case10.py). NOTE: the completed Bunkering_09 run used the stale D=46mm value (mixingLength 3.22e-3, value 6.0e6, ~21x higher epsilon) -- see case history notes; expected to be a minor near-field (few nozzle diameters) effect only, not rerun.
+}
+// ************************************************************************* //

@@ -1,0 +1,153 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  Field          | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   Operation      | blockMeshDict                                   |
+|   \\  /    And            | Simple uniform mesh                             |
+|    \\/     Manipulation   |                                                 |
+\*---------------------------------------------------------------------------*/
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+
+scale 1.0;
+
+// ======================  DOMAIN  ======================
+xmin    -150;
+xmax     110;   // kept verbatim from Bunkering_09 for a clean side-by-side
+                 // comparison (case 09 raised it for +z-jet Coanda deflection
+                 // along the ship hull; not strictly needed for a -x jet, but
+                 // retained so the two domains are identical).
+                 // NOTE (from case 09): kept uniform (no x-grading) -- the quay
+                 // STL extends to x=100, so a coarsening block there conflicts
+                 // with the quay geometry.
+
+ymin     -40;
+ymax      40;
+
+zmin       0;
+zmid      42;   // top of the uniform lower block (unchanged from earlier cases)
+zmax     130;   // kept from case 09: the full-bore buoyant plume needs head-
+                 // room. For the -x horizontal jet the plume rises over the
+                 // long downstream run rather than punching straight up, but a
+                 // 100% release still lifts well past 42 m -- graded upper
+                 // block retained (same as case 09's vertical study).
+
+// ======================  MESH  ======================
+// Uniform cell size dx=dy=dz=2m across the full x range and the lower
+// (0-42m) z range -- unchanged from Bunkering_07/08 so the existing
+// ship/quay/nozzle refinement setup (snappyHexMeshDict, topoSetDict) is
+// unaffected; x widened to keep the same 2m resolution out to x=110.
+nCellsX     130; // (110 - (-150)) / 2m
+nCellsY      40; // 80;
+nCellsZ_lo   21; // 42;   // 42m / 21 = 2m cells
+
+// Upper block (z: 42-130, 88m span): graded from ~2m (matches lower block,
+// smooth ~3% jump) up to ~12.4m near the top boundary -- far from the
+// ship/nozzle/plume core, doesn't need fine resolution.
+nCellsZ_hi   15;
+gradingZ_hi   6;   // ratio of last cell / first cell size
+
+// ======================  VERTICES  ======================
+vertices
+(
+    ($xmin $ymin $zmin)   // 0
+    ($xmax $ymin $zmin)   // 1
+    ($xmax $ymax $zmin)   // 2
+    ($xmin $ymax $zmin)   // 3
+
+    ($xmin $ymin $zmid)   // 4
+    ($xmax $ymin $zmid)   // 5
+    ($xmax $ymax $zmid)   // 6
+    ($xmin $ymax $zmid)   // 7
+
+    ($xmin $ymin $zmax)   // 8
+    ($xmax $ymin $zmax)   // 9
+    ($xmax $ymax $zmax)   // 10
+    ($xmin $ymax $zmax)   // 11
+);
+
+// ======================  BLOCKS  ======================
+blocks
+(
+    hex (0 1 2 3 4 5 6 7) ($nCellsX $nCellsY $nCellsZ_lo) simpleGrading (1 1 1)
+    hex (4 5 6 7 8 9 10 11) ($nCellsX $nCellsY $nCellsZ_hi) simpleGrading (1 1 $gradingZ_hi)
+);
+
+// ======================  EDGES  ======================
+edges
+(
+);
+
+// ======================  BOUNDARIES  ======================
+boundary
+(
+    left
+    {
+        type patch;
+        faces
+        (
+            (0 3 7 4)
+            (4 7 11 8)
+        );
+    }
+
+    right
+    {
+        type patch;
+        faces
+        (
+            (1 2 6 5)
+            (5 6 10 9)
+        );
+    }
+
+    front
+    {
+        type patch;
+        faces
+        (
+            (0 1 5 4)
+            (4 5 9 8)
+        );
+    }
+
+    back
+    {
+        type patch;
+        faces
+        (
+            (3 2 6 7)
+            (7 6 10 11)
+        );
+    }
+
+    top
+    {
+        type patch;
+        faces
+        (
+            (8 9 10 11)
+        );
+    }
+
+    bottom
+    {
+        type wall;
+        faces
+        (
+            (0 3 2 1)
+        );
+    }
+);
+
+// ======================  MERGE PATCH PAIRS  ======================
+mergePatchPairs
+(
+);
+
+// ************************************************************************* //

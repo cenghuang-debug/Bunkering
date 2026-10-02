@@ -1,0 +1,100 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+// Southwest ambient wind, 7 m/s: (Vx, Vy, Vz) = (4.95, -4.95, 0) m/s.
+// windValue is only used by pressureInletOutletVelocity where the local
+// flux indicates INFLOW at that patch -- on outflow-dominated patches it's
+// simply ignored (zeroGradient applies instead), so it's safe/standard
+// practice to set it uniformly on every open patch rather than work out
+// which faces are nominally windward: left (xmin) and back (ymax) are the
+// two primary windward faces for this vector, but any patch can see local
+// inflow (ship wake, plume-driven recirculation), and it should pull in
+// wind-speed air rather than the near-still 0.01 m/s placeholder.
+windValue       uniform (4.95 -4.95 0);
+
+// Unlike earlier no-wind cases, the wind is blowing continuously before
+// the rupture, not starting from calm -- internalField (the pre-
+// potentialFoam starting guess, see Allrun) should reflect that instead of
+// the old near-rest 0.01 m/s. potentialFoam still resolves a proper
+// irrotational field around the ship/quay from the BCs regardless of this
+// starting guess, but the field file should describe the right premise on
+// its own, including as a fallback if the transient solver is ever run
+// directly off 0.orig without potentialFoam first.
+internalField   $windValue;
+
+boundaryField
+{
+    right
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    left
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    front
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    back
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    top
+    {
+        type            pressureInletOutletVelocity;
+        value           $windValue;
+        phi             phi;
+    }
+    bottom
+    {
+        type            noSlip;
+    }
+    bunkering-boat_m
+    {
+        type            noSlip;
+    }
+    bunkering-quay_larger_m
+    {
+        type            noSlip;
+    }
+    nozzle_holder_wall
+    {
+        type            noSlip;
+    }
+    nozzle
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0        (0 0 0))
+            (0.2      (0 0 800))   // ramp 0 to 800 m/s over 0.2 s
+            (2        (0 0 800))   // hold at 800 m/s until release end (endTime = 2 s)
+        );
+        value           uniform (0 0 0);
+}    
+}
+// ************************************************************************* //
